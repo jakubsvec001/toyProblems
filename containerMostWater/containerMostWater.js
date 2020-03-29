@@ -10,6 +10,7 @@ Note: You may not slant the container and n is at least 2.
  * @return {number}
  */
 var containerMostWater = function(height) {
+  if (height.length < 2) return 0;
   // helper function to get array of current maximum height visited
   const getHighest = (arr) => {
     let highest = arr[0]; 
@@ -40,5 +41,7 @@ var containerMostWater = function(height) {
   })
   return largestArea
 };
+
+console.log(containerMostWater([3,7]))
 
 module.exports = containerMostWater;
