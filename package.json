@@ -1,0 +1,24 @@
+{
+  "name": "toyproblems",
+  "version": "1.0.0",
+  "description": "",
+  "main": "longestSubstringNoRepeats.js",
+  "dependencies": {
+    "jest": "^25.2.3",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakubsvec001/toyProblems.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakubsvec001/toyProblems/issues"
+  },
+  "homepage": "https://github.com/jakubsvec001/toyProblems#readme"
+}
