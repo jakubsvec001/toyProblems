@@ -25,6 +25,11 @@ describe('inputs both positive or negative', ()=>{
     test('the absolute values of the divisor and dividend are equal and both are equally-signed', () => {
       expect(divide(-1, -1)).toBe(1)
     })
+
+    test('the absolute values of the divisor and dividend are equal and both are equally-signed', () => {
+      expect(divide(-2147483648, -1)).toBe(2147483648)
+    })
+  
   })
   
   describe('dividend is smaller than divisor, equally-signed', () => {
@@ -75,6 +80,10 @@ describe('edge cases of zero', () => {
 
   test('returns zero when dividend is zero', () => {
     expect(divide(0, 9999)).toBe(0);
+  })
+
+  test('returns dividend if divisor is 1', () => {
+    expect(divide(-2147483648, 1)).toBe(-2147483648)
   })
 })
 

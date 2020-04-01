@@ -33,10 +33,12 @@ Assume we are dealing with an environment which could only store integers within
 var divide = function(dividend, divisor) {
   if (divisor === 0) return undefined;
   if (dividend === 0) return 0;
+  if (divisor === 1) return dividend;
+  if (divisor === -1) return -dividend;
   const isNegative = (dividend < 0 && divisor > 0) || (dividend > 0 && divisor < 0);
   let numerator = Math.abs(dividend);
   let denominator = Math.abs(divisor);
-  let count = -1;
+  let count = 0;
   if (numerator < denominator) {
     return 0
   }
@@ -48,10 +50,9 @@ var divide = function(dividend, divisor) {
     numerator -= denominator;
     count += 1;
   }
+  if (numerator < 0) count -= 1;
   if (isNegative) return -count
   return count;
 };
-
-console.log(divide(-7, 3))
 
 module.exports = divide;
