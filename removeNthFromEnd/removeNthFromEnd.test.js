@@ -2,9 +2,9 @@ const { removeNthFromEnd, LinkedList } = require('./removeNthFromEnd');
 
 
 describe('edge cases', () => {
-  test('only one node in LinkedList, n = 0', () => {
+  test('only one node in LinkedList, n = 1', () => {
     const m0 = new LinkedList(0);
-    const res = removeNthFromEnd(m0, 0);
+    const res = removeNthFromEnd(m0, 1);
     expect(res).toBeNull()
   });
 
@@ -15,17 +15,16 @@ describe('edge cases', () => {
     const m3 = m2.add(3);
     const m4 = m3.add(4);
     const m5 = m4.add(5);
-    const res = removeNthFromEnd(m0, 6);
+    const res = removeNthFromEnd(m0, 7);
     expect([0, 1, 2, 3, 4, 5]).toEqual(res.toArray());
   });
 
   test('only one node in LL, n greater than length of LinkedList', () => {
     const m0 = new LinkedList(0);
-    const res = removeNthFromEnd(m0, 1);
+    const res = removeNthFromEnd(m0, 2);
     expect([0]).toEqual(res.toArray());
   });
 });
-
 
 describe('standard cases', () => {
   test('handles falsey input for second parameter by returning input array', () => {
@@ -46,7 +45,7 @@ describe('standard cases', () => {
     const m3 = m2.add(3);
     const m4 = m3.add(4);
     const m5 = m4.add(5);
-    const res = removeNthFromEnd(m0, 0);
+    const res = removeNthFromEnd(m0, 1);
     expect([0, 1, 2, 3, 4]).toEqual(m0.toArray());
   });
 
@@ -57,7 +56,7 @@ describe('standard cases', () => {
     const m3 = m2.add(3);
     const m4 = m3.add(4);
     const m5 = m4.add(5);
-    const res = removeNthFromEnd(m0, 1);
+    const res = removeNthFromEnd(m0, 2);
     expect([0, 1, 2, 3, 5]).toEqual(m0.toArray());
   });
 
@@ -68,7 +67,7 @@ describe('standard cases', () => {
     const m3 = m2.add(3);
     const m4 = m3.add(4);
     const m5 = m4.add(5);
-    const res = removeNthFromEnd(m0, 2);
+    const res = removeNthFromEnd(m0, 3);
     expect([0, 1, 2, 4, 5]).toEqual(res.toArray());
   });
 
@@ -79,7 +78,7 @@ describe('standard cases', () => {
     const m3 = m2.add(3);
     const m4 = m3.add(4);
     const m5 = m4.add(5);
-    const res = removeNthFromEnd(m0, 3);
+    const res = removeNthFromEnd(m0, 4);
     expect([0, 1, 3, 4, 5]).toEqual(res.toArray());
   });
 
@@ -90,7 +89,7 @@ describe('standard cases', () => {
     const m3 = m2.add(3);
     const m4 = m3.add(4);
     const m5 = m4.add(5);
-    const res = removeNthFromEnd(m0, 4);
+    const res = removeNthFromEnd(m0, 6);
     expect([1, 2, 3, 4, 5]).toEqual(res.toArray());
   });
 });
