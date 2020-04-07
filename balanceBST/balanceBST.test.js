@@ -1,8 +1,18 @@
-const { BST } = require('./balanceBST');
+const { BST, insertionSort } = require('./balanceBST');
 
 let root;
 
-describe('basic BST methods', () => {
+describe('insertionSort inserting properly', () => {
+  test.only('mostly sorted, single insert', () => {
+    expect(insertionSort([1,2,3,4,6,5,7,8,9])).toEqual([1,2,3,4,5,6,7,8,9])
+  })
+
+  test('unsorted, multiple insert', () => {
+    expect(insertionSort([2,9,6,8,7,5,4,3,1])).toEqual([1,2,3,4,5,6,7,8,9])
+  })
+})
+
+xdescribe('basic BST methods', () => {
 
   beforeEach(() => {
     root = new BST(3)
