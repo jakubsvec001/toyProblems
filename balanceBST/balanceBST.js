@@ -15,15 +15,25 @@ BST.prototype.toArray = function (isDepthFirst = true) {
       result.push(node.value);
       [node.left, node.right].forEach((child) => {
         if (child) {
-          depthFirst(child)
+          depthFirst(child);
         }
       });
     };
     depthFirst(this);
   } else {
     console.log('Breadth First');
+    const breadthFirst = (nodes) => {
+      const children = [];
+      nodes.forEach((child) => {
+        result.push(child.value);
+        if (child.left) children.push(child.left);
+        if (child.right) children.push(child.right);
+      });
+      if (children.length !== 0) breadthFirst(children);
+    };
+    breadthFirst([this])
   }
-  return result
+  return result;
 };
 
 BST.prototype.add = function (val) {
@@ -39,16 +49,18 @@ BST.prototype.add = function (val) {
   }
 };
 
-// const root = new BST(3);
-// root.add(5);
-// root.add(1);
-// root.add(3);
-// root.add(7);
-// root.add(8);
-// root.add(9);
-// root.add(10);
-// root.add(11);
-// console.log(root.toArray());
+root = new BST(3)
+root.add(5)
+root.add(1)
+root.add(3)
+root.add(2)
+root.add(4)
+root.add(7)
+root.add(8)
+root.add(9)
+root.add(10)
+root.add(11)
+root.toArray(false)
 
 BST.prototype.balance = function () {};
 
