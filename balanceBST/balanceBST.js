@@ -97,7 +97,8 @@ BST.prototype.add = function (val) {
       }
     }
   }
-  return this;
+  if (this.isUnbalanced()) return this.balance();
+  else return this;
 };
 
 /**
@@ -168,16 +169,16 @@ BST.prototype.depth = function() {
 } 
 
 root = new BST(5);
-root.add(1);
-root.add(3);
-root.add(2);
-root.add(4);
-root.add(10);
-root.add(8);
-root.add(7);
-root.add(9);
-root.add(6);
-console.log(root.isUnbalanced())
-console.log(root.balance().isUnbalanced())
+root = root.add(1);
+root = root.add(3);
+root = root.add(2);
+root = root.add(4);
+root = root.add(10);
+root = root.add(8);
+root = root.add(7);
+root = root.add(9);
+root = root.add(6);
+console.log(root.toArray())
+
 
 module.exports = { BST, insertionSort };
