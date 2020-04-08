@@ -24,7 +24,6 @@ let root;
 
 describe('basic BST methods', () => {
   
-
   beforeEach(() => {
     root = new BST(5)
     root.add(1)
@@ -48,10 +47,14 @@ describe('basic BST methods', () => {
   })
 });
 
-describe('.balance edge cases', () => {
-  test('', () => {});
+describe('BST balance method edge cases', () => {
+  test('only one node in tree', () => {
+    expect(new BST(5).toArray()).toEqual([5])
+  });
 });
 
-describe('.balance base cases', () => {
-  test('', () => {});
+describe('BST balance method base cases', () => {
+  test('correctly returns a new BST that is balanced', () => {
+    expect(root.balance().toArray()).toEqual([5,2,8,1,3,6,9,4,7,10])
+  });
 });
