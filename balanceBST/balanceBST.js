@@ -139,4 +139,45 @@ BST.prototype.balance = function () {
   return balancedBST;
 };
 
+/**
+ * a method that uses log2() to determine if a BST is unbalanced 
+ * @returns {Boolean} 
+ */
+BST.prototype.isUnbalanced = function() {
+  const nodeCount = this.toArray().length;
+  const depth = this.depth();
+  const logFloor = Math.floor(Math.log2(nodeCount));
+  return depth > logFloor;
+};
+
+/**
+ * a method that finds the maximum depth of a BST tree
+ * @return {int} - maximum depth of BST tree;
+ */
+BST.prototype.depth = function() {
+  let maxDepth = 0;
+  const traverse = (node, currentMax) => {
+    currentMax += 1;
+    if (currentMax > maxDepth) maxDepth = currentMax;
+    [node.left, node.right].forEach((node) => {
+      if (node) traverse(node, currentMax);
+    })
+  }
+  traverse(this, -1)
+  return maxDepth;
+} 
+
+root = new BST(5);
+root.add(1);
+root.add(3);
+root.add(2);
+root.add(4);
+root.add(10);
+root.add(8);
+root.add(7);
+root.add(9);
+root.add(6);
+console.log(root.isUnbalanced())
+console.log(root.balance().isUnbalanced())
+
 module.exports = { BST, insertionSort };
