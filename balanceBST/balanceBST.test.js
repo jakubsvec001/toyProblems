@@ -78,9 +78,19 @@ describe('BST balance method base cases', () => {
 
 describe('BST unbalanced method tests', () => {
   test('unbalanced tree', () => {
-    expect(root.isUnbalanced()).toBeTruthy();
+    expect(root.isUnbalanced()).toBe(True);
   });
   test('balanced tree', () => {
-    expect(root.balance().isUnbalanced()).toBeFalsy();
+    expect(root.balance().isUnbalanced()).toBe(False);
   });
 });
+
+describe('BST .depth() method tests', () => {
+  test('correctly returns maximum depth of BST tree', () => {
+    expect(root.depth()).toBe(4);
+  });
+  test('correctly returns maximum depth of BST tree', () => {
+    expect(root.balance().depth()).toBe(3);
+  });
+});
+
