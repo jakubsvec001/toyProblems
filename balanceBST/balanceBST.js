@@ -1,3 +1,8 @@
+/**
+ * A simple insertionSort algorithm
+ * @param {Array} arr - an unsorted Array
+ * @return {Array} - a sorted Array
+ */
 const insertionSort = (arr) => {
   let sorted = [arr[0]];
   let unsorted = arr.slice(1);
@@ -23,6 +28,11 @@ const insertionSort = (arr) => {
   return sorted;
 };
 
+/**
+ * a Binary Search Tree class implementation
+ * @param {int} val
+ * @return {root node}  
+ */
 const BST = function (val) {
   this.value = val;
   this.left = null;
@@ -30,6 +40,11 @@ const BST = function (val) {
   return this;
 };
 
+/**
+ * for testing purposes, returns the tree in an array representation
+ * It can return an array using depth-first or breadth-first search
+ * @param {bool} isDepthFirst - optional input to select depthfirst search if true, breadthfirst search if false
+ */
 BST.prototype.toArray = function (isDepthFirst) {
   const result = [];
   if (isDepthFirst) {
@@ -57,6 +72,12 @@ BST.prototype.toArray = function (isDepthFirst) {
   return result;
 };
 
+/**
+ * a method for adding a node to a BST tree from a root node
+ * `this` is used to select the root node
+ * @param {int} val - the value to be added to the BST tree
+ * @return {BST}
+ */
 BST.prototype.add = function (val) {
   let context = this;
   while (true) {
@@ -76,8 +97,13 @@ BST.prototype.add = function (val) {
       }
     }
   }
+  return this;
 };
 
+/**
+ * a method for balancing a BST tree
+ * @return {BST} - a new, balanced BST tree 
+ */
 BST.prototype.balance = function () {
   const sortedArray = insertionSort(this.toArray())
   let balancedBST;
@@ -112,19 +138,5 @@ BST.prototype.balance = function () {
   binarySearch([[0, sortedArray.length - 1]]);
   return balancedBST;
 };
-
-// const root = new BST(5);
-// root.add(1);
-// root.add(3);
-// root.add(2);
-// root.add(4);
-// root.add(10);
-// root.add(8);
-// root.add(7);
-// root.add(9);
-// root.add(6);
-// console.log(root.balance().toArray())
-
-// console.log(root.balance());
 
 module.exports = { BST, insertionSort };
