@@ -30,10 +30,9 @@ const BST = function (val) {
   return this;
 };
 
-BST.prototype.toArray = function (isDepthFirst = true) {
+BST.prototype.toArray = function (isDepthFirst) {
   const result = [];
   if (isDepthFirst) {
-    console.log('Depth First');
     const depthFirst = (node) => {
       result.push(node.value);
       [node.left, node.right].forEach((child) => {
@@ -44,7 +43,6 @@ BST.prototype.toArray = function (isDepthFirst = true) {
     };
     depthFirst(this);
   } else {
-    console.log('Breadth First');
     const breadthFirst = (nodes) => {
       const children = [];
       nodes.forEach((child) => {
@@ -81,7 +79,10 @@ BST.prototype.add = function (val) {
 };
 
 
-BST.prototype.balance = function () {};
+BST.prototype.balance = function () {
+  let sortedArray = insertionSort(this.toArray())
+  console.log(sortedArray)
+};
 
 const root = new BST(5)
 root.add(1)
@@ -93,6 +94,8 @@ root.add(8)
 root.add(7)
 root.add(9)
 root.add(6)
-console.log(root.toArray(false))
+console.log(root.toArray(true))
+
+root.balance()
 
 module.exports = { BST, insertionSort };
