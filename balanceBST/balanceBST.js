@@ -9,15 +9,15 @@ const insertionSort = (arr) => {
     for (let j = sorted.length - 1; j >= 0; j -= 1) {
       toCompare = sorted[j];
       if (j === 0) {
-        if (toSort < sorted[0]){
-          sorted.unshift(toSort)
+        if (toSort < sorted[0]) {
+          sorted.unshift(toSort);
         } else {
-          sorted.splice(1, 0, toSort)
+          sorted.splice(1, 0, toSort);
         }
       } else if (toSort > toCompare) {
-        sorted.splice(j+1, 0, toSort)
-        break
-      } 
+        sorted.splice(j + 1, 0, toSort);
+        break;
+      }
     }
   }
   return sorted;
@@ -59,7 +59,7 @@ BST.prototype.toArray = function (isDepthFirst) {
 
 BST.prototype.add = function (val) {
   let context = this;
-  while(true){
+  while (true) {
     if (val < context.value) {
       if (context.left === null) {
         context.left = new BST(val);
@@ -72,30 +72,59 @@ BST.prototype.add = function (val) {
         context.right = new BST(val);
         break;
       } else {
-        context = context.right
+        context = context.right;
       }
     }
   }
 };
 
-
 BST.prototype.balance = function () {
-  let sortedArray = insertionSort(this.toArray())
-  console.log(sortedArray)
+  const sortedArray = insertionSort(this.toArray())
+  let balancedBST;
+  const binarySearch = (zoneTuples) => {
+    let middleIndex;
+    let middleItem;
+    let zone;
+    let lowerZone;
+    let upperZone;
+    // get lefts, middle, and rights for each item in zoneTuples
+    const newZoneTuples = [];
+    for (let i = 0; i < zoneTuples.length; i += 1){
+      zone = zoneTuples[i];
+      const [lowerIndex, upperIndex] = zone;
+      middleIndex = Math.floor((lowerIndex + upperIndex) / 2);
+      middleItem = sortedArray[middleIndex];
+      if (balancedBST) balancedBST.add(middleItem);
+      else balancedBST = new BST(middleItem);
+      // get new left for zone
+      lowerZone = [lowerIndex, middleIndex - 1];
+      // get new right for zone
+      upperZone = [middleIndex + 1, upperIndex];
+      if (lowerZone[0] <= lowerZone[1]){
+        newZoneTuples.push(lowerZone);
+      }
+      if (upperZone[0] <= upperZone[1]){
+        newZoneTuples.push(upperZone);
+      }
+    }
+    if (newZoneTuples.length !== 0) binarySearch(newZoneTuples);
+  };
+  binarySearch([[0, sortedArray.length - 1]]);
+  return balancedBST;
 };
 
-const root = new BST(5)
-root.add(1)
-root.add(3)
-root.add(2)
-root.add(4)
-root.add(10)
-root.add(8)
-root.add(7)
-root.add(9)
-root.add(6)
-console.log(root.toArray(true))
+// const root = new BST(5);
+// root.add(1);
+// root.add(3);
+// root.add(2);
+// root.add(4);
+// root.add(10);
+// root.add(8);
+// root.add(7);
+// root.add(9);
+// root.add(6);
+// console.log(root.balance().toArray())
 
-root.balance()
+// console.log(root.balance());
 
 module.exports = { BST, insertionSort };
