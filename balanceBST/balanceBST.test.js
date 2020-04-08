@@ -78,10 +78,10 @@ describe('BST balance method base cases', () => {
 
 describe('BST unbalanced method tests', () => {
   test('unbalanced tree', () => {
-    expect(root.isUnbalanced()).toBe(True);
+    expect(root.isUnbalanced()).toBe(true);
   });
   test('balanced tree', () => {
-    expect(root.balance().isUnbalanced()).toBe(False);
+    expect(root.balance().isUnbalanced()).toBe(false);
   });
 });
 
