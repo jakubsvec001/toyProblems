@@ -7,10 +7,6 @@ describe('edge case tests', () => {
 })
 
 describe('base case tests', () => {
-  test('returns array with three nested arrays', () => {
-    expect([12, 3, 1, 2, -6, 5, -8, 6]).toEqual([[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]])
-  })
-
   test('1', () => {
     expect(threeNumberSum([1, 2, 3], 6)).toEqual([[1, 2, 3]]);
   })
