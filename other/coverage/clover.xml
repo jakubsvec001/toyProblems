@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1585579558856" clover="3.2.0">
+  <project timestamp="1585579558856" name="All files">
+    <metrics statements="19" coveredstatements="19" conditionals="16" coveredconditionals="16" methods="1" coveredmethods="1" elements="36" coveredelements="36" complexity="0" loc="19" ncloc="19" packages="1" files="1" classes="1"/>
+    <file name="divideTwoIntegers.js" path="/Users/jakewija/webDev/toyProblems/divideTwoIntegers/divideTwoIntegers.js">
+      <metrics statements="19" coveredstatements="19" conditionals="16" coveredconditionals="16" methods="1" coveredmethods="1"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="34" count="11" type="cond" truecount="2" falsecount="0"/>
+      <line num="35" count="10" type="cond" truecount="2" falsecount="0"/>
+      <line num="36" count="9" type="cond" truecount="4" falsecount="0"/>
+      <line num="37" count="9" type="stmt"/>
+      <line num="38" count="9" type="stmt"/>
+      <line num="39" count="9" type="stmt"/>
+      <line num="40" count="9" type="cond" truecount="2" falsecount="0"/>
+      <line num="41" count="1" type="stmt"/>
+      <line num="43" count="8" type="cond" truecount="2" falsecount="0"/>
+      <line num="44" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="45" count="1" type="stmt"/>
+      <line num="47" count="4" type="stmt"/>
+      <line num="48" count="14" type="stmt"/>
+      <line num="49" count="14" type="stmt"/>
+      <line num="51" count="4" type="cond" truecount="2" falsecount="0"/>
+      <line num="52" count="2" type="stmt"/>
+      <line num="55" count="1" type="stmt"/>
+      <line num="57" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
