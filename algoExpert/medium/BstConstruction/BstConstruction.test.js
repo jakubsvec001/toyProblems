@@ -30,6 +30,7 @@ const test4 = new BST(10)
   .remove(17);
 
 function inOrderTraverse(tree, array) {
+  console.log(tree)
   if (tree !== null) {
     inOrderTraverse(tree.left, array);
     array.push(tree.value);
