@@ -1,0 +1,22 @@
+{
+  "name": "toyproblems",
+  "version": "1.0.0",
+  "description": "",
+  "main": "reverseLinkedList.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakubsvec001/toyProblems.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakubsvec001/toyProblems/issues"
+  },
+  "homepage": "https://github.com/jakubsvec001/toyProblems#readme",
+  "devDependencies": {
+    "jest": "^25.3.0"
+  }
+}

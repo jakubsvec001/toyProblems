@@ -8,25 +8,9 @@
 
 /**
  * create empty result array
- * create L pointer, R pointer,
- * sort the array (O(log(n)))
- * set base (B) pointer to beginning of array
- * WHILE B item is < targetSum OR B pointer is not at the end of the array:
- * * SET L pointer to be B pointer + 1
- * * SET R pointer to be L pointer + 1
- * * LOOP array.length - R pointer times:
- * * * SET tempItem to B item + L item + R item
- * * * IF tempItem === targetSum:
- * * * * push [B item, L item, R item] into result
- * * * * break loop
- * * * ELSE IF tempItem > target:
- * * * * break loop
- * * * ELSE:
- * * * * INCREMENT R pointer
- * * INCREMENT L pointer + 1
- * * SET R pointer to L pointer + 1;
- * @param {*} array 
- * @param {*} targetSum 
+ * @param {Array} array 
+ * @param {Int} targetSum 
+ * @returns {Array} - a 2D array
  */
 function threeNumberSum(array, targetSum) {
   const result = [];
