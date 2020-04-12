@@ -10,9 +10,7 @@ const moveElementToEnd = (array, toMove) => {
   let movedCount = 0;
   for ( let i = 0; i <= array.length - 1; i += 1 ) {
     if (array[i] === toMove) {
-      console.log('i', i, 'before', array)
       array.push(array.splice(i, 1)[0]);
-      console.log('i', i, 'after', array)
       i -= 1;
       movedCount += 1;
       if ( i === array.length - movedCount ) {
