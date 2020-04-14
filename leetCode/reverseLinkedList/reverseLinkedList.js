@@ -21,10 +21,11 @@ function ListNode(val) {
  * @param {ListNode} head
  * @return {ListNode}
  */
+
 var reverseList = function(head) {
   let prev = null,
-      next = null,
-      curr = head;
+      curr = head,
+      next;
   while(curr !== null) {
       next = curr.next;
       curr.next = prev;
@@ -32,6 +33,30 @@ var reverseList = function(head) {
       curr = next;
   }
   return prev
+};
+
+var reverseList = function(head) {
+  // edge case input
+  if (!(head instanceof ListNode)) { 
+    return null;
+  }
+  // iterative approach, space O(1), time O(n)
+  let oldHead = head;
+  let newHead;
+  let currentNode;
+  while (oldHead) {
+    currentNode = new ListNode(oldHead.val);
+    // if newHead initialized;
+    if (newHead) {
+      currentNode.next = newHead;
+      newHead = currentNode;
+    // if first iteration;
+    } else {
+      newHead = currentNode;
+    }
+    oldHead = oldHead.next;
+  }
+  return newHead;
 };
 
 
