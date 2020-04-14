@@ -45,12 +45,17 @@ class BST {
   }
 
   remove(value) {
-    // Write your code here.
-    // Do not edit the return statement of this method.
-    let prevContext;
-    let context = this;
-    
+    // test if root node is only node, if so, return root node
 
+    // traverse tree and find the target value
+      //if found:
+        // if node to the left of target, traverse left first:
+
+        // else if node to left doesn't exist and node to right does):
+
+        // else:
+          // it is a leaf, so simply remove node
+    // if fully traversed and target value not found, return root node
     return this;
   }
 }
@@ -75,7 +80,7 @@ const test4 = new BST(10)
 const test2 = new BST(10).insert(15).insert(11).insert(22).remove(10);
 const test3 = new BST(10).insert(5).insert(7).insert(2).remove(10);
 
-console.log(test3)
+
 
 function inOrderTraverse(tree, array) {
   if (tree !== null) {
@@ -86,7 +91,6 @@ function inOrderTraverse(tree, array) {
   return array;
 }
 
-console.log(inOrderTraverse(test3, []))
 
 // Do not edit the line below.
 module.exports = BST;
