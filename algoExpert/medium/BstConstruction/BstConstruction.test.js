@@ -29,8 +29,12 @@ const test4 = new BST(10)
   .remove(22)
   .remove(17);
 
+const test5 = new BST(10).insert(15).insert(11).insert(22).insert(5).insert(7).insert(2).remove(10);
+
+const test6 = new BST(10).remove(10)
+
+
 function inOrderTraverse(tree, array) {
-  console.log(tree)
   if (tree !== null) {
     inOrderTraverse(tree.left, array);
     array.push(tree.value);
@@ -124,4 +128,28 @@ describe('base cases', () => {
   it('Test Case #18', function () {
     expect(test4.right.right.left.value).toEqual(16);
   });
+
+  it('Test Case #19', function () {
+    expect(test5.value).toEqual(7);
+  });
+
+  it('Test Case #20', function () {
+    expect(test5.left.right).toBeNull();
+  });
+
+  it('Test Case #21', function () {
+    expect(test5.right.left.value).toBe(11);
+  });
+
+  it('Test Case #22', () => {
+    expect(test6.value).toBe(10)
+  })
+
+  it('Test Case #23', () => {
+    expect(test6.left).toBeNull()
+  })
+
+  it('Test Case #24', () => {
+    expect(test6.right).toBeNull()
+  })
 });
