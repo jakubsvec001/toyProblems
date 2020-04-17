@@ -31,6 +31,8 @@ const twoNumberSum = (inputArray, targetSum) => {
   return []
 }
 
+console.log(twoNumberSum([1,2,3,4,5,6,7,8,9,15], 18))
+
 // { 
 //   '1': [ 5 ],
 //   '3': [ 0 ],
@@ -41,6 +43,5 @@ const twoNumberSum = (inputArray, targetSum) => {
 //   '-4': [ 2 ],
 // } target 10 -> return -1, 11
 
-console.log(twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10))
 
 module.exports = { twoNumberSum }
