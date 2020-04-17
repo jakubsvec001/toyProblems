@@ -12,17 +12,17 @@ const twoNumberSum = (inputArray, targetSum) => {
   // iterate through array again, find diffTarget in directory
   for (let i = 0; i <= inputArray.length - 1; i += 1 ) {
     // calculate difference target
-
+    diffTarget = targetSum - inputArray[i];
     // if diffTarget in directory, check for same index 
-
+    if (dir[diffTarget]) {
       // if the directory contains only one index entry for the diffTarget, and our current index is not the same as the index entry: 
-
+      if (dir[diffTarget].length === 1 && i !== dir[diffTarget][0]) {
         // return [inputArray[i], targetDiff]
-
+        return [inputArray[i], diffTarget];
       // else if directory contains more than one index entry:
-
+      } else if (dir[diffTarget].length > 1){
         // return [currentIndex, targetDiff]
-
+        return [inputArray[i], diffTarget];
       } 
     }
   }
