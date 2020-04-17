@@ -128,28 +128,4 @@ describe('base cases', () => {
   it('Test Case #18', function () {
     expect(test4.right.right.left.value).toEqual(16);
   });
-
-  it('Test Case #19', function () {
-    expect(test5.value).toEqual(7);
-  });
-
-  it('Test Case #20', function () {
-    expect(test5.left.right).toBeNull();
-  });
-
-  it('Test Case #21', function () {
-    expect(test5.right.left.value).toBe(11);
-  });
-
-  it('Test Case #22', () => {
-    expect(test6.value).toBe(10)
-  })
-
-  it('Test Case #23', () => {
-    expect(test6.left).toBeNull()
-  })
-
-  it('Test Case #24', () => {
-    expect(test6.right).toBeNull()
-  })
 });
