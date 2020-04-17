@@ -4,6 +4,7 @@
 const twoNumberSum = (inputArray, targetSum) => {
   const dir = {};
   let diffTarget;
+  let result;
   // fill directory with key = number and value = [indexes]
   inputArray.forEach((item, i) => {
     if (dir[item]) dir[item].push(i);
@@ -15,14 +16,15 @@ const twoNumberSum = (inputArray, targetSum) => {
     diffTarget = targetSum - inputArray[i];
     // if diffTarget in directory, check for same index 
     if (dir[diffTarget]) {
+      result = [inputArray[i], diffTarget] 
       // if the directory contains only one index entry for the diffTarget, and our current index is not the same as the index entry: 
       if (dir[diffTarget].length === 1 && i !== dir[diffTarget][0]) {
         // return [inputArray[i], targetDiff]
-        return [inputArray[i], diffTarget];
+        return result;
       // else if directory contains more than one index entry:
       } else if (dir[diffTarget].length > 1){
         // return [currentIndex, targetDiff]
-        return [inputArray[i], diffTarget];
+        return result;
       } 
     }
   }
