@@ -60,13 +60,13 @@ class BST {
           previous[previousDirection] = null;
         }
         // if context has left child
-        else if (context.left) {
-          toReplace = context._findReplacement('left');
+        else if (context.right) {
+          toReplace = context._findReplacement('right');
           context.value = toReplace
           return this;
         // if context has right child
         } else {
-          toReplace = context._findReplacement('right');
+          toReplace = context._findReplacement('left');
           context.value = toReplace;
           return this;
         }
@@ -107,25 +107,10 @@ class BST {
   }
 }
 
-const test4 = new BST(10)
-  .insert(5)
-  .insert(15)
-  .insert(22)
-  .insert(17)
-  .insert(34)
-  .insert(7)
-  .insert(2)
-  .insert(5)
-  .insert(1)
-  .insert(35)
-  .insert(27)
-  .insert(16)
-  .insert(30)
-  .remove(22)
-  .remove(17);
+const test5 = new BST(10).insert(15).insert(11).insert(22).insert(5).insert(7).insert(2).remove(10);
 
 console.log(test4.right.right.left.value)
-
+console.log(test4.right.right.value)
 // const test2 = new BST(10).insert(15).insert(11).insert(22).remove(10);
 // const test3 = new BST(10).insert(5).insert(7).insert(2).remove(10);
 
