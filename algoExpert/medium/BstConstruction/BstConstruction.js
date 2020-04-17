@@ -44,19 +44,66 @@ class BST {
     return false;
   }
 
-  remove(value) {
+  remove(target) {
     // test if root node is only node, if so, return root node
-
+    if (this.left === null && this.right === null) return this;
     // traverse tree and find the target value
+    let toReplace;
+    let previous;
+    let previousDirection;
+    let context = this;
+    while (context) {
       //if found:
-        // if node to the left of target, traverse left first:
-
-        // else if node to left doesn't exist and node to right does):
-
-        // else:
-          // it is a leaf, so simply remove node
-    // if fully traversed and target value not found, return root node
+      if (context.value === target) {
+        // if context doesn't have children:
+        if (!context.left && !context.right) {
+          previous[previousDirection] = null;
+        }
+        // if context has left child
+        else if (context.left) {
+          toReplace = context._findReplacement('left');
+          context.value = toReplace
+          return this;
+        // if context has right child
+        } else {
+          toReplace = context._findReplacement('right');
+          context.value = toReplace;
+          return this;
+        }
+      }
+      previous = context;
+      if (target < context.value && context.left) {
+        context = context.left;
+        previousDirection = 'left';
+      } else if (context.right) {
+        context = context.right;
+        previousDirection = 'right';
+      }
+    }
     return this;
+  }
+  
+  _findReplacement(direction) {
+    if (!direction === 'left' || !direction === 'right' ) throw 'improper input, must be direction parameter must be left or right';
+    const opposite = direction === 'left' ? 'right' : 'left';
+    let previous = this;
+    // move once in provided direction
+    let context = this[direction];
+    // if leaf node:
+    if (context[opposite] === null) {
+      previous[direction] = context[direction];
+      return context.value;
+    }
+    previous = context;
+    context = context[opposite];
+    while (context) {
+      if (context[opposite] === null) {
+        previous[opposite] = context[direction];
+        return context.value;
+      } 
+      previous = context;
+      context = context[opposite];
+    }
   }
 }
 
@@ -77,8 +124,10 @@ const test4 = new BST(10)
   .remove(22)
   .remove(17);
 
-const test2 = new BST(10).insert(15).insert(11).insert(22).remove(10);
-const test3 = new BST(10).insert(5).insert(7).insert(2).remove(10);
+console.log(test4.right.right.left.value)
+
+// const test2 = new BST(10).insert(15).insert(11).insert(22).remove(10);
+// const test3 = new BST(10).insert(5).insert(7).insert(2).remove(10);
 
 
 
