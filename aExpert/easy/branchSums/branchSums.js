@@ -20,7 +20,6 @@ BinaryTree.prototype.branchSums = function () {
     } else {
       [node.left, node.right].forEach((child) => {
       if (child) traverse(child, currentTotal);
-      else result.push(currentTotal);
       });
     }
   };
@@ -40,5 +39,22 @@ test1.left.left.right = new BinaryTree(9);
 test1.left.right.left = new BinaryTree(10);
 
 console.log(test1.branchSums())
+
+const test2 = new BinaryTree(0);
+test2.left = new BinaryTree(9);
+test2.right = new BinaryTree(1);
+test2.right.left = new BinaryTree(15);
+test2.right.right = new BinaryTree(10);
+test2.right.right.left = new BinaryTree(100);
+test2.right.right.right = new BinaryTree(200);
+
+console.log(test2.branchSums())
+
+const test4 = new BinaryTree(0);
+test4.right = new BinaryTree(1)
+test4.right.right = new BinaryTree(10)
+test4.right.right.right = new BinaryTree(100)
+
+console.log(test4.branchSums());
 
 module.exports = { BinaryTree };
