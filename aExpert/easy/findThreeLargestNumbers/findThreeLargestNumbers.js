@@ -37,8 +37,8 @@ const findThreeLargestNumbers = (array) => {
   return tuple.filter((item) => item !== -Infinity);
 }
 
-// console.log(findThreeLargestNumbers([5,1,2,4,3]))
+console.log(findThreeLargestNumbers([5,1,2,4,3]))
 console.log(findThreeLargestNumbers([15,5,9,10,12]))
-// console.log(findThreeLargestNumbers([141, 1, 17, -7, -17, -27, 18, 541, 8, 7, 7]))
+console.log(findThreeLargestNumbers([141, 1, 17, -7, -17, -27, 18, 541, 8, 7, 7]))
 
 module.exports = { findThreeLargestNumbers }
