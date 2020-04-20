@@ -11,16 +11,12 @@ beforeEach(() => {
 describe('base case', () => {
   describe('setHead()', () => {
     it('sets head', () => {
-      // expect(DLL.head.value).toBe(1)
-      console.log(DLL)
+      expect(DLL.head.value).toBe(1)
     })
   })
   describe('setTail()', () => {
-    it('', () => {
-      it('sets tail', () => {
-        // expect(DLL.tail.value).toBe(1)
-        console.log(DLL)
-      })
+    it('sets tail', () => {
+      expect(DLL.tail.value).toBe(2)
     })
   })
   describe('insertBefore()', () => {
