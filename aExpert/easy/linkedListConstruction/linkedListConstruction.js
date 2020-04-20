@@ -70,8 +70,15 @@ DoublyLinkedList.prototype.setTail = function (node) {
   }
   return node;
 };
-
+//ADD edge case for helper method .convertToArray(); when head and/or tail are null, return
 DoublyLinkedList.prototype.convertToArray = function () {
+  if (!this.head && !this.tail) {
+    return { 'forward': [], 'backward': []};
+  } else if (this.head && !this.tail) {
+    return {'forward': [this.head], 'backward': [this.tail]};
+  } else if (!this.head && this.tail) {
+    return {'forward': [this.tail], 'backward': [this.tail]};
+  }
   let result = {};
   let temp = [];
   let context = this.head;
@@ -89,6 +96,12 @@ DoublyLinkedList.prototype.convertToArray = function () {
   result['backward'] = temp;
   return result;
 };
+
+const DLL1 = new DoublyLinkedList();
+DLL1.setHead(new Node(1));
+DLL1.setHead(new Node(2));
+DLL1.setHead(new Node(3));
+console.log(DLL1.convertToArray());
 
 DoublyLinkedList.prototype.insertBefore = function (node, nodeToInsert) {
   let context = this.head;
