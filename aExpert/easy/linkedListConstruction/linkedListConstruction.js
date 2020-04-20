@@ -46,7 +46,7 @@ DoublyLinkedList.prototype.setHead = function (node) {
     this.head.next = second;
     second.previous = this.head;
   }
-  return this;
+  return node;
 };
 
 DoublyLinkedList.prototype.setTail = function (node) {
@@ -68,7 +68,7 @@ DoublyLinkedList.prototype.setTail = function (node) {
     this.tail.previous = secondToLast;
     secondToLast.next = this.tail;
   }
-  return this;
+  return node;
 };
 
 DoublyLinkedList.prototype.convertToArray = function(){
@@ -90,44 +90,35 @@ DoublyLinkedList.prototype.convertToArray = function(){
   return result
 } 
 
-// let DLL = new DoublyLinkedList();
-// DLL.setTail(new Node(1));
-// // console.log(DLL.tail.value)
-// DLL.setTail(new Node(2));
-// // console.log(DLL.tail.value)
-// DLL.setTail(new Node(3));
-// // console.log(DLL.tail.value)
-// console.log(DLL.convertToArray());
-
-DLL = new DoublyLinkedList();
-DLL.setHead(new Node(1));
-// console.log(DLL.head.value)
-DLL.setHead(new Node(2));
-// console.log(DLL.head.value)
-DLL.setHead(new Node(3));
-// console.log(DLL.head.value)
-console.log(DLL.convertToArray());
-
-
 DoublyLinkedList.prototype.insertBefore = function (node, nodeToInsert) {
   let context = this.head;
   while (context) {
-    if (context === node) {
-      context.previous.next = nodeToInsert;
-      nodeToInsert.previous = context.previous;
-      nodeToInsert.next = context;
-      context.previous = nodeToInsert;
-    }
-    context = context.next;
-  }
+    // if context = node:
+      // if node is head of DLL:
+        // perform surgery to splice nodeToInsert into head
+      
+      // else 
+        // perform surgery to splice nodeToInsert into DLL
+
+      // return nodeToInsert
 };
 
-DoublyLinkedList.prototype.insertAfter = function (node, nodeToInsert) {};
+DoublyLinkedList.prototype.insertAfter = function (node, nodeToInsert) {
+  let context = this.head;
+  while (context) {
+    // if context = node:
+      // if node is tail of DLL:
+        // perform surgery to splice nodeToInsert into tail
+      
+      // else 
+        // perform surgery to splice nodeToInsert into DLL
 
-DoublyLinkedList.prototype.insertAtPosition = function (
-  position,
-  nodeToInsert,
-) {};
+      // return nodeToInsert
+};
+
+DoublyLinkedList.prototype.insertAtPosition = function (position, nodeToInsert) {
+  
+};
 
 DoublyLinkedList.prototype.removeNodesWithValue = function (value) {};
 
