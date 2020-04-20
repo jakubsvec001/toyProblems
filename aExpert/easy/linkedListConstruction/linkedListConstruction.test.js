@@ -15,8 +15,8 @@ DLL2.setTail(new Node(3));
 describe('base case', () => {
   describe('setHead()', () => {
     it('1', () => {
-      expect(DLL1.convertToArray()[0]).toEqual([3,2,1])
-      expect(DLL1.convertToArray()[1]).toEqual([1,2,3])
+      expect(DLL1.convertToArray().foreward).toEqual([3,2,1])
+      expect(DLL1.convertToArray().backward).toEqual([1,2,3])
     })
     it('2', () => {
       expect(DLL1.head.value).toBe(3)
@@ -24,8 +24,8 @@ describe('base case', () => {
   })
   describe('setTail()', () => {
     it('1', () => {
-      expect(DLL2.convertToArray()[0]).toEqual([1,2,3])
-      expect(DLL2.convertToArray()[1]).toEqual([3,2,1])
+      expect(DLL2.convertToArray().foreward).toEqual([1,2,3])
+      expect(DLL2.convertToArray().backward).toEqual([3,2,1])
     })
     it('2', () => {
       expect(DLL2.tail.value).toBe(3)
