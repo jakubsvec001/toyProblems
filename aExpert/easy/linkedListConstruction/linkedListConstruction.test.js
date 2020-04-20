@@ -63,27 +63,55 @@ describe('base case', () => {
       expect(DLL3.head.value).toBe(99);
       expect(output).toBeUndefined();
     });
+    it('nodeToInsert already exists, re-position exiting node into head', () => {
+      // DLL3.insertBefore(n0, new Node(99));
+      // expected = DLL3.convertToArray();
+      // expect(expected.forward).toEqual([99, 1, 1000, 2]);
+      // expect(expected.backward).toEqual([2, 1000, 1, 99]);
+      // expect(DLL3.head.value).toBe(99);
+    });
+    it('nodeToInsert already exists, re-position exiting node into LL body', () => {
+      // DLL3.insertBefore(n0, new Node(99));
+      // expected = DLL3.convertToArray();
+      // expect(expected.forward).toEqual([99, 1, 1000, 2]);
+      // expect(expected.backward).toEqual([2, 1000, 1, 99]);
+      // expect(DLL3.head.value).toBe(99);
+    });
   });
   describe('insertAfter()', () => {
     it('inserts into the middle of multiple nodes', () => {
       DLL3.insertAfter(n0, new Node(5));
       expected = DLL3.convertToArray();
       expect(expected.forward).toEqual([99, 1, 5, 1000, 2]);
-      expect(expected.backward).toEqual([2,1000,5,1,99]);
+      expect(expected.backward).toEqual([2, 1000, 5, 1, 99]);
     });
     it('inserts into the tail, if desired', () => {
       output = DLL3.insertAfter(n1, new Node(555));
       expected = DLL3.convertToArray();
       expect(expected.forward).toEqual([99, 1, 5, 1000, 2, 555]);
-      expect(expected.backward).toEqual([555,2,1000,5,1,99]);
+      expect(expected.backward).toEqual([555, 2, 1000, 5, 1, 99]);
     });
     it('returns undefined if unable to insert', () => {
       output = DLL3.insertBefore(new Node(2222), new Node(100));
       expected = DLL3.convertToArray();
       expect(expected.forward).toEqual([99, 1, 5, 1000, 2, 555]);
-      expect(expected.backward).toEqual([555,2,1000,5,1,99]);
+      expect(expected.backward).toEqual([555, 2, 1000, 5, 1, 99]);
       expect(DLL3.head.value).toBe(99);
       expect(output).toBeUndefined();
+    });
+    it('nodeToInsert already exists, re-position exiting node into head', () => {
+      // DLL3.insertBefore(n0, new Node(99));
+      // expected = DLL3.convertToArray();
+      // expect(expected.forward).toEqual([99, 1, 1000, 2]);
+      // expect(expected.backward).toEqual([2, 1000, 1, 99]);
+      // expect(DLL3.head.value).toBe(99);
+    });
+    it('nodeToInsert already exists, re-position exiting node into LL body', () => {
+      // DLL3.insertBefore(n0, new Node(99));
+      // expected = DLL3.convertToArray();
+      // expect(expected.forward).toEqual([99, 1, 1000, 2]);
+      // expect(expected.backward).toEqual([2, 1000, 1, 99]);
+      // expect(DLL3.head.value).toBe(99);
     });
   });
   describe('insertAtPosition()', () => {
@@ -92,26 +120,26 @@ describe('base case', () => {
       expected = DLL4.convertToArray();
       expect(expected.forward).toEqual([1, 2, 200, 3]);
       expect(expected.backward).toEqual([3, 200, 2, 1]);
-    })
+    });
     it('inserts into first position', () => {
       DLL4.insertAtPosition(0, new Node(0));
       expected = DLL4.convertToArray();
       expect(expected.forward).toEqual([0, 1, 2, 200, 3]);
       expect(expected.backward).toEqual([3, 200, 2, 1, 0]);
-    })
+    });
     it('inserts into past position', () => {
       DLL4.insertAtPosition(5, new Node(999));
       expected = DLL4.convertToArray();
       expect(expected.forward).toEqual([0, 1, 2, 200, 3, 999]);
       expect(expected.backward).toEqual([999, 3, 200, 2, 1, 0]);
-    })
+    });
     it('Edge case - cannot insert, position out of bounds, returns undefined', () => {
       output = DLL4.insertAtPosition(7, new Node(3000));
       expected = DLL4.convertToArray();
       expect(expected.forward).toEqual([0, 1, 2, 200, 3, 999]);
       expect(expected.backward).toEqual([999, 3, 200, 2, 1, 0]);
       expect(output).toBeUndefined();
-    })
+    });
   });
   describe('removeNodesWithValue()', () => {
     it('', () => {});

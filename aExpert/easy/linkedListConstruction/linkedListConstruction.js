@@ -189,6 +189,7 @@ let m0 = DLL4.setHead(new Node(1));
 let m1 = DLL4.setTail(new Node(2));
 let m2 = DLL4.setTail(new Node(3));
 DLL4.insertAtPosition(2, new Node(200));
+DLL4.insertAtPosition(0, new Node(0));
 let expected = DLL4.convertToArray();
 console.log(expected)
 
