@@ -3,28 +3,12 @@ const { DoublyLinkedList, Node } = require('./linkedListConstruction');
 let expected;
 let output;
 
-const DLL1 = new DoublyLinkedList();
-DLL1.setHead(new Node(1));
-DLL1.setHead(new Node(2));
-DLL1.setHead(new Node(3));
-
-const DLL2 = new DoublyLinkedList();
-DLL2.setTail(new Node(1));
-DLL2.setTail(new Node(2));
-DLL2.setTail(new Node(3));
-
-const DLL3 = new DoublyLinkedList();
-let n0 = DLL3.setHead(new Node(1));
-let n1 = DLL3.setTail(new Node(2));
-DLL3.insertBefore(n1, new Node(1000));
-
-const DLL4 = new DoublyLinkedList();
-let m0 = DLL4.setHead(new Node(1));
-let m1 = DLL4.setTail(new Node(2));
-let m2 = DLL4.setTail(new Node(3));
-
 describe('base case', () => {
   describe('setHead()', () => {
+    const DLL1 = new DoublyLinkedList();
+    DLL1.setHead(new Node(1));
+    DLL1.setHead(new Node(2));
+    DLL1.setHead(new Node(3));
     it('1', () => {
       expect(DLL1.convertToArray().forward).toEqual([3, 2, 1]);
       expect(DLL1.convertToArray().backward).toEqual([1, 2, 3]);
@@ -34,6 +18,10 @@ describe('base case', () => {
     });
   });
   describe('setTail()', () => {
+    const DLL2 = new DoublyLinkedList();
+    DLL2.setTail(new Node(1));
+    DLL2.setTail(new Node(2));
+    DLL2.setTail(new Node(3));
     it('1', () => {
       expect(DLL2.convertToArray().forward).toEqual([1, 2, 3]);
       expect(DLL2.convertToArray().backward).toEqual([3, 2, 1]);
@@ -43,6 +31,10 @@ describe('base case', () => {
     });
   });
   describe('insertBefore()', () => {
+    const DLL3 = new DoublyLinkedList();
+    let n0 = DLL3.setHead(new Node(1));
+    let n1 = DLL3.setTail(new Node(2));
+    DLL3.insertBefore(n1, new Node(1000));
     it('inserts in between 2 nodes', () => {
       expected = DLL3.convertToArray();
       expect(expected.forward).toEqual([1, 1000, 2]);
@@ -64,6 +56,7 @@ describe('base case', () => {
       expect(output).toBeUndefined();
     });
     it('nodeToInsert already exists, re-position exiting node into head', () => {
+      expect().toBe('todo');
       // DLL3.insertBefore(n0, new Node(99));
       // expected = DLL3.convertToArray();
       // expect(expected.forward).toEqual([99, 1, 1000, 2]);
@@ -71,6 +64,7 @@ describe('base case', () => {
       // expect(DLL3.head.value).toBe(99);
     });
     it('nodeToInsert already exists, re-position exiting node into LL body', () => {
+      expect().toBe('todo');
       // DLL3.insertBefore(n0, new Node(99));
       // expected = DLL3.convertToArray();
       // expect(expected.forward).toEqual([99, 1, 1000, 2]);
@@ -79,27 +73,34 @@ describe('base case', () => {
     });
   });
   describe('insertAfter()', () => {
+    const DLL7 = new DoublyLinkedList();
+    let q0 = DLL7.setHead(new Node(1));
+    let q1 = DLL7.setTail(new Node(2));
+    DLL7.insertBefore(q1, new Node(1000));
+    DLL7.insertBefore(q0, new Node(99));
+    //   99 - 1 - 1000 - 2
     it('inserts into the middle of multiple nodes', () => {
-      DLL3.insertAfter(n0, new Node(5));
-      expected = DLL3.convertToArray();
+      DLL7.insertAfter(q0, new Node(5));
+      expected = DLL7.convertToArray();
       expect(expected.forward).toEqual([99, 1, 5, 1000, 2]);
       expect(expected.backward).toEqual([2, 1000, 5, 1, 99]);
     });
     it('inserts into the tail, if desired', () => {
-      output = DLL3.insertAfter(n1, new Node(555));
-      expected = DLL3.convertToArray();
+      output = DLL7.insertAfter(q1, new Node(555));
+      expected = DLL7.convertToArray();
       expect(expected.forward).toEqual([99, 1, 5, 1000, 2, 555]);
       expect(expected.backward).toEqual([555, 2, 1000, 5, 1, 99]);
     });
     it('returns undefined if unable to insert', () => {
-      output = DLL3.insertBefore(new Node(2222), new Node(100));
-      expected = DLL3.convertToArray();
+      output = DLL7.insertBefore(new Node(2222), new Node(100));
+      expected = DLL7.convertToArray();
       expect(expected.forward).toEqual([99, 1, 5, 1000, 2, 555]);
       expect(expected.backward).toEqual([555, 2, 1000, 5, 1, 99]);
-      expect(DLL3.head.value).toBe(99);
+      expect(DLL7.head.value).toBe(99);
       expect(output).toBeUndefined();
     });
     it('nodeToInsert already exists, re-position exiting node into head', () => {
+      expect().toBe('todo');
       // DLL3.insertBefore(n0, new Node(99));
       // expected = DLL3.convertToArray();
       // expect(expected.forward).toEqual([99, 1, 1000, 2]);
@@ -107,6 +108,7 @@ describe('base case', () => {
       // expect(DLL3.head.value).toBe(99);
     });
     it('nodeToInsert already exists, re-position exiting node into LL body', () => {
+      expect().toBe('todo');
       // DLL3.insertBefore(n0, new Node(99));
       // expected = DLL3.convertToArray();
       // expect(expected.forward).toEqual([99, 1, 1000, 2]);
@@ -115,6 +117,10 @@ describe('base case', () => {
     });
   });
   describe('insertAtPosition()', () => {
+    const DLL4 = new DoublyLinkedList();
+    let m0 = DLL4.setHead(new Node(1));
+    let m1 = DLL4.setTail(new Node(2));
+    let m2 = DLL4.setTail(new Node(3));
     it('inserts into second position', () => {
       DLL4.insertAtPosition(2, new Node(200));
       expected = DLL4.convertToArray();
@@ -142,9 +148,64 @@ describe('base case', () => {
     });
   });
   describe('removeNodesWithValue()', () => {
-    it('', () => {});
+    const DLL5 = new DoublyLinkedList();
+    let p0 = DLL5.setHead(new Node(1));
+    let p2 = DLL5.setTail(new Node(3));
+    let p3 = DLL5.setTail(new Node(2));
+    let p4 = DLL5.setTail(new Node(3));
+    let p5 = DLL5.setTail(new Node(5));
+    it('correctly removes multiple instances of a node', () => {
+      DLL5.removeNodesWithValue(3);
+      expected = DLL5.convertToArray();
+      expect(expected.forward).toEqual([1,2,5]);
+      expect(expected.backward).toEqual([5,2,1]);
+    });
+    it('correctly removes a single instance of a node', () => {
+      DLL5.removeNodesWithValue(1);
+      expected = DLL5.convertToArray();
+      expect(expected.forward).toEqual([2,5]);
+      expect(expected.backward).toEqual([5,2]);
+    });
+    it('correctly removes a single instance of a node, with that node being a head', () => {
+      DLL5.removeNodesWithValue(2);
+      expect(DLL5.head.value).toBe(2)
+      expect(DLL5.tail.value).toBe(5)
+      expected = DLL5.convertToArray();
+      expect(expected.forward).toEqual([5]);
+      expect(expected.backward).toEqual([5]);
+      expect(DLL5.head.value).toBeNull()
+      expect(DLL5.tail.value).toBe(5)
+    });
+    it('correctly removes a single instance of a node, with that node being a tail, head is null', () => {
+      DLL5.removeNodesWithValue(5);
+      expected = DLL5.convertToArray();
+      expect(expected.forward).toEqual([]);
+      expect(expected.backward).toEqual([]);
+    });
+    it('nodeToInsert already exists, re-position exiting node into head', () => {
+      expect().toBe('todo');
+      // DLL3.insertBefore(n0, new Node(99));
+      // expected = DLL3.convertToArray();
+      // expect(expected.forward).toEqual([99, 1, 1000, 2]);
+      // expect(expected.backward).toEqual([2, 1000, 1, 99]);
+      // expect(DLL3.head.value).toBe(99);
+    });
+    it('nodeToInsert already exists, re-position exiting node into LL body', () => {
+      expect().toBe('todo');
+      // DLL3.insertBefore(n0, new Node(99));
+      // expected = DLL3.convertToArray();
+      // expect(expected.forward).toEqual([99, 1, 1000, 2]);
+      // expect(expected.backward).toEqual([2, 1000, 1, 99]);
+      // expect(DLL3.head.value).toBe(99);
+    });
   });
   describe('remove()', () => {
+    const DLL6 = new DoublyLinkedList();
+    let r0 = DLL6.setHead(new Node(1));
+    let r1 = DLL6.setTail(new Node(3));
+    let r2 = DLL6.setTail(new Node(2));
+    let r3 = DLL6.setTail(new Node(3));
+    let r4 = DLL6.setTail(new Node(5));
     it('', () => {});
   });
   describe('containsNodeWithValue()', () => {
