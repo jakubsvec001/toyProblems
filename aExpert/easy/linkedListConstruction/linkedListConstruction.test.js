@@ -1,6 +1,7 @@
 const { DoublyLinkedList, Node } = require('./linkedListConstruction');
 
 let expected;
+let output;
 
 const DLL1 = new DoublyLinkedList();
 DLL1.setHead(new Node(1));
@@ -39,55 +40,46 @@ describe('base case', () => {
   describe('insertBefore()', () => {
     it('inserts in between 2 nodes', () => {
       expected = DLL3.convertToArray();
-      expect(expected.forward).toEqual([1, 1000, 2]);
+      expect(expected.foreward).toEqual([1, 1000, 2]);
       expect(expected.backward).toEqual([2, 1000, 1]);
     });
     it('inserts into head if desired', () => {
       DLL3.insertBefore(n0, new Node(99));
       expected = DLL3.convertToArray();
-      expect(expected.forward).toEqual([99, 1, 1000, 2]);
+      expect(expected.foreward).toEqual([99, 1, 1000, 2]);
       expect(expected.backward).toEqual([2, 1000, 1, 99]);
       expect(DLL3.head.value).toBe(99);
+    });
+    it('returns undefined if unable to insert', () => {
+      output = DLL3.insertBefore(new Node(2222), new Node(100));
+      expected = DLL3.convertToArray();
+      expect(expected.foreward).toEqual([99, 1, 1000, 2]);
+      expect(expected.backward).toEqual([2, 1000, 1, 99]);
+      expect(DLL3.head.value).toBe(99);
+      expect(output).toBeUndefined();
     });
   });
   describe('insertAfter()', () => {
     it('inserts into the middle of multiple nodes', () => {
-      DLL3.insertAfter(n0, new Node(2));
+      DLL3.insertAfter(n0, new Node(5));
       expected = DLL3.convertToArray();
-      expect(expected.forward).toEqual([99, 1, 5, 1000, 2]);
+      expect(expected.foreward).toEqual([99, 1, 5, 1000, 2]);
+      expect(expected.backward).toEqual([2,1000,5,1,99]);
     });
     it('inserts into the tail, if desired', () => {
-      DLL3.insertAfter(n1, new Node(555));
+      output = DLL3.insertAfter(n1, new Node(555));
       expected = DLL3.convertToArray();
-      expect(expected.forward).toEqual([99, 1, 5, 1000, 2, 555]);
+      expect(expected.foreward).toEqual([99, 1, 5, 1000, 2, 555]);
+      expect(expected.backward).toEqual([555,2,1000,5,1,99]);
     });
-  });
-  describe('insertAtPosition()', () => {
-    it('', () => {});
-  });
-  describe('removeNodesWithValue()', () => {
-    it('', () => {});
-  });
-  describe('remove()', () => {
-    it('', () => {});
-  });
-  describe('containsNodeWithValue()', () => {
-    it('', () => {});
-  });
-});
-
-describe('edge case', () => {
-  describe('setHead()', () => {
-    it('', () => {});
-  });
-  describe('setTail()', () => {
-    it('', () => {});
-  });
-  describe('insertBefore()', () => {
-    it('', () => {});
-  });
-  describe('insertAfter()', () => {
-    it('', () => {});
+    it('returns undefined if unable to insert', () => {
+      output = DLL3.insertBefore(new Node(2222), new Node(100));
+      expected = DLL3.convertToArray();
+      expect(expected.foreward).toEqual([99, 1, 5, 1000, 2, 555]);
+      expect(expected.backward).toEqual([555,2,1000,5,1,99]);
+      expect(DLL3.head.value).toBe(99);
+      expect(output).toBeUndefined();
+    });
   });
   describe('insertAtPosition()', () => {
     it('', () => {});
