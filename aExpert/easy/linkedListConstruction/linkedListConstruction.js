@@ -72,21 +72,21 @@ DoublyLinkedList.prototype.setTail = function (node) {
 };
 
 DoublyLinkedList.prototype.convertToArray = function(){
-  let result = []
+  let result = {}
   let temp = [];
   let context = this.head;
   while (context) {
     temp.push(context.value)
     context = context.next;
   }
-  result.push(temp);
+  result['foreward'] = temp;
   temp = []
   context = this.tail;
   while (context) {
     temp.push(context.value)
     context = context.previous;
   }
-  result.push(temp);
+  result['backward'] = temp;
   return result
 } 
 
@@ -106,7 +106,7 @@ DLL.setHead(new Node(2));
 // console.log(DLL.head.value)
 DLL.setHead(new Node(3));
 // console.log(DLL.head.value)
-// console.log(DLL.convertToArray());
+console.log(DLL.convertToArray());
 
 
 DoublyLinkedList.prototype.insertBefore = function (node, nodeToInsert) {
