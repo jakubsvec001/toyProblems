@@ -70,8 +70,9 @@ DoublyLinkedList.prototype.setTail = function (node) {
   }
   return node;
 };
-//ADD edge case for helper method .convertToArray(); when head and/or tail are null, return
+
 DoublyLinkedList.prototype.convertToArray = function () {
+  // edge case when head is null, tail is null, or both are null
   if (!this.head && !this.tail) {
     return { 'forward': [], 'backward': []};
   } else if (this.head && !this.tail) {
@@ -96,12 +97,6 @@ DoublyLinkedList.prototype.convertToArray = function () {
   result['backward'] = temp;
   return result;
 };
-
-const DLL1 = new DoublyLinkedList();
-DLL1.setHead(new Node(1));
-DLL1.setHead(new Node(2));
-DLL1.setHead(new Node(3));
-console.log(DLL1.convertToArray());
 
 DoublyLinkedList.prototype.insertBefore = function (node, nodeToInsert) {
   let context = this.head;
@@ -197,17 +192,9 @@ DoublyLinkedList.prototype.insertAtPosition = function (position, nodeToInsert) 
   return undefined;
 };
 
-const DLL4 = new DoublyLinkedList();
-let m0 = DLL4.setHead(new Node(1));
-let m1 = DLL4.setTail(new Node(2));
-let m2 = DLL4.setTail(new Node(3));
-DLL4.insertAtPosition(2, new Node(200));
-DLL4.insertAtPosition(0, new Node(0));
-let expected = DLL4.convertToArray();
-console.log(expected)
-
-
-DoublyLinkedList.prototype.removeNodesWithValue = function (value) {};
+DoublyLinkedList.prototype.removeNodesWithValue = function (value) {
+  
+};
 
 DoublyLinkedList.prototype.remove = function (node) {};
 
