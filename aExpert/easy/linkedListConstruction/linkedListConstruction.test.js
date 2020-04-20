@@ -90,26 +90,26 @@ describe('base case', () => {
     it('inserts into second position', () => {
       DLL4.insertAtPosition(2, new Node(200));
       expected = DLL4.convertToArray();
-      expect(expected.forward).toEqual([1, 200, 2, 3]);
-      expect(expected.backward).toEqual([3, 2, 200, 1]);
+      expect(expected.forward).toEqual([1, 2, 200, 3]);
+      expect(expected.backward).toEqual([3, 200, 2, 1]);
     })
     it('inserts into first position', () => {
       DLL4.insertAtPosition(0, new Node(0));
       expected = DLL4.convertToArray();
-      expect(expected.forward).toEqual([0, 1, 200, 2, 3]);
-      expect(expected.backward).toEqual([3, 2, 200, 1, 0]);
+      expect(expected.forward).toEqual([0, 1, 2, 200, 3]);
+      expect(expected.backward).toEqual([3, 200, 2, 1, 0]);
     })
     it('inserts into past position', () => {
       DLL4.insertAtPosition(5, new Node(999));
       expected = DLL4.convertToArray();
-      expect(expected.forward).toEqual([0, 1, 200, 2, 3, 999]);
-      expect(expected.backward).toEqual([999, 3, 2, 200, 1, 0]);
+      expect(expected.forward).toEqual([0, 1, 2, 200, 3, 999]);
+      expect(expected.backward).toEqual([999, 3, 200, 2, 1, 0]);
     })
     it('Edge case - cannot insert, position out of bounds, returns undefined', () => {
       output = DLL4.insertAtPosition(7, new Node(3000));
       expected = DLL4.convertToArray();
-      expect(expected.forward).toEqual([0, 1, 200, 2, 3, 999]);
-      expect(expected.backward).toEqual([999, 3, 2, 200, 1, 0]);
+      expect(expected.forward).toEqual([0, 1, 2, 200, 3, 999]);
+      expect(expected.backward).toEqual([999, 3, 200, 2, 1, 0]);
       expect(output).toBeUndefined();
     })
   });
