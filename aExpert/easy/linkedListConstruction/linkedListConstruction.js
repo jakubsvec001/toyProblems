@@ -74,11 +74,11 @@ DoublyLinkedList.prototype.setTail = function (node) {
 DoublyLinkedList.prototype.convertToArray = function () {
   // edge case when head is null, tail is null, or both are null
   if (!this.head && !this.tail) {
-    return { 'forward': [], 'backward': []};
+    return { forward: [], backward: [] };
   } else if (this.head && !this.tail) {
-    return {'forward': [this.head], 'backward': [this.tail]};
+    return { forward: [this.head.value], backward: [this.head.value] };
   } else if (!this.head && this.tail) {
-    return {'forward': [this.tail], 'backward': [this.tail]};
+    return { forward: [this.tail.value], backward: [this.tail.value] };
   }
   let result = {};
   let temp = [];
@@ -154,14 +154,17 @@ DoublyLinkedList.prototype.insertAfter = function (node, nodeToInsert) {
   return undefined;
 };
 
-DoublyLinkedList.prototype.insertAtPosition = function (position, nodeToInsert) {
+DoublyLinkedList.prototype.insertAtPosition = function (
+  position,
+  nodeToInsert,
+) {
   let context = this.head;
   // if inserting into head:
   if (position === 0) {
     // perform surgery for head of DLL
     context.previous = nodeToInsert;
     nodeToInsert.next = context;
-    this.head = nodeToInsert 
+    this.head = nodeToInsert;
     return nodeToInsert;
   }
   // else continue by creating a position counter
@@ -170,20 +173,20 @@ DoublyLinkedList.prototype.insertAtPosition = function (position, nodeToInsert) 
   context = context.next;
   while (context) {
     // if inserting into tail / if (context.next === null && counter+1 === position)
-    if (context.next === null && counter+1 === position){
+    if (context.next === null && counter + 1 === position) {
       // perform surgery for tail of DLL
       context.next = nodeToInsert;
       nodeToInsert.previous = context;
       this.tail = nodeToInsert;
       return nodeToInsert;
-    // else if (counter === position) 
+      // else if (counter === position)
     } else if (counter === position) {
       // perform surgery within DLL
       context.previous.next = nodeToInsert;
-      nodeToInsert.previous = context.previous
+      nodeToInsert.previous = context.previous;
       context.previous = nodeToInsert;
       nodeToInsert.next = context;
-      return nodeToInsert
+      return nodeToInsert;
     }
     counter += 1;
     context = context.next;
@@ -204,35 +207,41 @@ DoublyLinkedList.prototype.removeNodesWithValue = function (value) {
         // delete node, reassign pointers, reassign head
         // if next node exists and it is the tail:
         if (context.next && context.next === this.tail) {
-        
-        // else if next node exists and the tail is not next
-        } else if 
-          (context.next && context.next !== this.tail) {
-            this.head = context.next;
-            this.head.previous = null;
-        // else if there is no next node: 
+          this.head = this.tail;
+          this.tail = null;
+          break;
+          // else if next node exists and the tail is not next
+        } else if (context.next && context.next !== this.tail) {
+          this.head = context.next;
+          this.head.previous = null;
+          // else if there is no next node:
         } else {
           // delete head from DLL
           this.head = null;
         }
         // do not increment context to next node
-      // else if context is tail:
-      } else if (context = this.tail) {
+        // else if context is tail:
+      } else if ((context = this.tail)) {
         // delete node, reassign pointers, reassign tail
         if (context.previous) {
-
         }
-        break
-      // else in the middle of DLL:
+        break;
+        // else in the middle of DLL:
       } else {
         // delete node, reassign pointers
-
         // do not increment context to next node
-      };
-    };
-  };
+      }
+    }
+  }
   return this;
 };
+
+const DLL8 = new DoublyLinkedList();
+DLL8.setHead(new Node(1));
+DLL8.setTail(new Node(2));
+DLL8.removeNodesWithValue(1);
+console.log(DLL8.convertToArray().forward);
+console.log(DLL8.convertToArray().backward);
 
 DoublyLinkedList.prototype.remove = function (node) {};
 
