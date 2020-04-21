@@ -40,36 +40,12 @@ describe('base case', () => {
       expect(expected.forward).toEqual([1, 1000, 2]);
       expect(expected.backward).toEqual([2, 1000, 1]);
     });
-    it('inserts into head if desired', () => {
+    it('inserts into head', () => {
       DLL3.insertBefore(n0, new Node(99));
       expected = DLL3.convertToArray();
       expect(expected.forward).toEqual([99, 1, 1000, 2]);
       expect(expected.backward).toEqual([2, 1000, 1, 99]);
       expect(DLL3.head.value).toBe(99);
-    });
-    it('returns undefined if unable to insert', () => {
-      output = DLL3.insertBefore(new Node(2222), new Node(100));
-      expected = DLL3.convertToArray();
-      expect(expected.forward).toEqual([99, 1, 1000, 2]);
-      expect(expected.backward).toEqual([2, 1000, 1, 99]);
-      expect(DLL3.head.value).toBe(99);
-      expect(output).toBeUndefined();
-    });
-    it('nodeToInsert already exists, re-position exiting node into head', () => {
-      expect().toBe('todo');
-      // DLL3.insertBefore(n0, new Node(99));
-      // expected = DLL3.convertToArray();
-      // expect(expected.forward).toEqual([99, 1, 1000, 2]);
-      // expect(expected.backward).toEqual([2, 1000, 1, 99]);
-      // expect(DLL3.head.value).toBe(99);
-    });
-    it('nodeToInsert already exists, re-position exiting node into LL body', () => {
-      expect().toBe('todo');
-      // DLL3.insertBefore(n0, new Node(99));
-      // expected = DLL3.convertToArray();
-      // expect(expected.forward).toEqual([99, 1, 1000, 2]);
-      // expect(expected.backward).toEqual([2, 1000, 1, 99]);
-      // expect(DLL3.head.value).toBe(99);
     });
   });
   describe('insertAfter()', () => {
@@ -227,6 +203,16 @@ describe('base case', () => {
     });
   });
   describe('containsNodeWithValue()', () => {
-    it('', () => {});
+    const DLL12 = new DoublyLinkedList()
+    DLL12.setHead(new Node(1))
+    DLL12.setTail(new Node(2))
+    DLL12.setTail(new Node(3))
+    DLL12.setTail(new Node(4));
+    it('detects if a node is NOT in the DLL', () => {
+      expect(DLL12.containsNodeWithValue(100)).toBe(false);
+    });
+    it('detects if a node is in the DLL', () => {
+      expect(DLL12.containsNodeWithValue(2)).toBe(true);
+    });
   });
 });
