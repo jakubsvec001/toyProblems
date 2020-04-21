@@ -193,7 +193,18 @@ DoublyLinkedList.prototype.insertAtPosition = function (position, nodeToInsert) 
 };
 
 DoublyLinkedList.prototype.removeNodesWithValue = function (value) {
-  
+  // create context that can be updated
+
+  // while context is not null:
+
+    // if context.value == value:
+
+      // delete item from DLL and perform surgery
+      // move contxt to the currently previous node
+    
+    // increment context to next node
+
+  // return this;
 };
 
 DoublyLinkedList.prototype.remove = function (node) {};
