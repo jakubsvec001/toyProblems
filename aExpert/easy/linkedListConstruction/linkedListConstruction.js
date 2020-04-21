@@ -46,7 +46,7 @@ DoublyLinkedList.prototype.setHead = function (node) {
     this.head.next = second;
     second.previous = this.head;
   }
-  return node;
+  return this;
 };
 
 DoublyLinkedList.prototype.setTail = function (node) {
@@ -69,33 +69,6 @@ DoublyLinkedList.prototype.setTail = function (node) {
     secondToLast.next = this.tail;
   }
   return node;
-};
-
-DoublyLinkedList.prototype.convertToArray = function () {
-  // edge case when head is null, tail is null, or both are null
-  if (!this.head && !this.tail) {
-    return { forward: [], backward: [] };
-  } else if (this.head && !this.tail) {
-    return { forward: [this.head.value], backward: [this.head.value] };
-  } else if (!this.head && this.tail) {
-    return { forward: [this.tail.value], backward: [this.tail.value] };
-  }
-  let result = {};
-  let temp = [];
-  let context = this.head;
-  while (context) {
-    temp.push(context.value);
-    context = context.next;
-  }
-  result['forward'] = temp;
-  temp = [];
-  context = this.tail;
-  while (context) {
-    temp.push(context.value);
-    context = context.previous;
-  }
-  result['backward'] = temp;
-  return result;
 };
 
 DoublyLinkedList.prototype.insertBefore = function (node, nodeToInsert) {
@@ -195,7 +168,7 @@ DoublyLinkedList.prototype.insertAtPosition = function (
   return undefined;
 };
 
-DoublyLinkedList.prototype.removeNodesWithValue = function (value) {
+DoublyLinkedList.prototype.removeNodesWithValue = function (value, deleteSingle = false) {
   // create context that can be updated
   let context = this.head;
   // while context is not null:
@@ -209,7 +182,7 @@ DoublyLinkedList.prototype.removeNodesWithValue = function (value) {
         if (context.next && context.next === this.tail) {
           this.head = this.tail;
           this.tail = null;
-          break;
+          this.head.previous = null
           // else if next node exists and the tail is not next
         } else if (context.next && context.next !== this.tail) {
           this.head = context.next;
@@ -218,31 +191,72 @@ DoublyLinkedList.prototype.removeNodesWithValue = function (value) {
         } else {
           // delete head from DLL
           this.head = null;
+          break
         }
         // do not increment context to next node
         // else if context is tail:
-      } else if ((context = this.tail)) {
+      } else if (context === this.tail) {
         // delete node, reassign pointers, reassign tail
-        if (context.previous) {
+        if (context.previous && context.previous === this.head) {
+          this.tail = null;
+          break;
+        } else {
+          this.tail = context.previous;
+          this.tail.next = null;
         }
-        break;
         // else in the middle of DLL:
       } else {
         // delete node, reassign pointers
+        context.previous.next = context.next;
+        context.next.previous = context.previous;
         // do not increment context to next node
       }
+      if (deleteSingle) break;
     }
+    context = context.next;
   }
   return this;
 };
 
-const DLL8 = new DoublyLinkedList();
-DLL8.setHead(new Node(1));
-DLL8.setTail(new Node(2));
-DLL8.removeNodesWithValue(1);
-console.log(DLL8.convertToArray().forward);
-console.log(DLL8.convertToArray().backward);
+DoublyLinkedList.prototype.remove = function (node) {
+  return this.removeNodesWithValue(node, true);
+};
 
-DoublyLinkedList.prototype.remove = function (node) {};
+DoublyLinkedList.prototype.containsNodeWithValue = function (value) {
+  let context = this.head;
+  while (context) {
+    if (context.value === value) return true;
+    context = context.next;
+  }
+  return false;
+};
+
+DoublyLinkedList.prototype.convertToArray = function () {
+  // edge case when head is null, tail is null, or both are null
+  if (!this.head && !this.tail) {
+    return { forward: [], backward: [] };
+  } else if (this.head && !this.tail) {
+    return { forward: [this.head.value], backward: [this.head.value] };
+  } else if (!this.head && this.tail) {
+    return { forward: [this.tail.value], backward: [this.tail.value] };
+  }
+  let result = {};
+  let temp = [];
+  let context = this.head;
+  while (context) {
+    temp.push(context.value);
+    context = context.next;
+  }
+  result['forward'] = temp;
+  temp = [];
+  context = this.tail;
+  while (context) {
+    temp.push(context.value);
+    context = context.previous;
+  }
+  result['backward'] = temp;
+  return result;
+};
+
 
 module.exports = { DoublyLinkedList, Node };
