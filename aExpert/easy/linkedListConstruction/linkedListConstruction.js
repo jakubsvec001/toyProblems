@@ -202,16 +202,31 @@ DoublyLinkedList.prototype.removeNodesWithValue = function (value) {
       // if context is head:
       if (context === this.head) {
         // delete node, reassign pointers, reassign head
-
+        // if next node exists and it is the tail:
+        if (context.next && context.next === this.tail) {
+        
+        // else if next node exists and the tail is not next
+        } else if 
+          (context.next && context.next !== this.tail) {
+            this.head = context.next;
+            this.head.previous = null;
+        // else if there is no next node: 
+        } else {
+          // delete head from DLL
+          this.head = null;
+        }
         // do not increment context to next node
       // else if context is tail:
       } else if (context = this.tail) {
         // delete node, reassign pointers, reassign tail
-        
+        if (context.previous) {
+
+        }
         break
       // else in the middle of DLL:
       } else {
         // delete node, reassign pointers
+
         // do not increment context to next node
       };
     };
