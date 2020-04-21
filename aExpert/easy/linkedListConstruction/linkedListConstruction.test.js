@@ -198,6 +198,36 @@ describe('base case', () => {
       // expect(expected.backward).toEqual([2, 1000, 1, 99]);
       // expect(DLL3.head.value).toBe(99);
     });
+    const DLL8 = new DoublyLinkedList();
+    DLL8.setHead(new Node(1));
+    DLL8.setTail(new Node(2));
+    DLL8.removeNodesWithValue(1);
+    it('should delete head and move tail to head if only two nodes in DLL', () => {
+      expect(DLL8.convertToArray().forward).toEqual([2]);
+      expect(DLL8.convertToArray().backward).toEqual([2]);
+      expect(DLL8.head.value).toBe(2);
+      expect(DLL8.tail).toBeNull();
+    })
+    it('should delete tail if only two nodes in DLL and tail is selected to delete', () => {
+      const DLL9 = new DoublyLinkedList();
+      DLL9.setHead(new Node(1));
+      DLL9.setTail(new Node(2));
+      DLL9.removeNodesWithValue(2);
+      expect(DLL9.convertToArray().forward).toEqual([1]);
+      expect(DLL9.convertToArray().backward).toEqual([1]);
+      expect(DLL9.head.value).toBe(1);
+      expect(DLL9.tail).toBeNull();
+    });
+    it.only('should delete head and tail if both nodes need to be deleted and are the only two nodes in DLL', () => {
+      const DLL10 = new DoublyLinkedList();
+      DLL10.setHead(new Node(1));
+      DLL10.setTail(new Node(1));
+      DLL10.removeNodesWithValue(1);
+      expect(DLL10.convertToArray().forward).toEqual([]);
+      expect(DLL10.convertToArray().backward).toEqual([]);
+      expect(DLL10.head).toBeNull();
+      expect(DLL10.tail).toBeNull();
+    })
   });
   describe('remove()', () => {
     const DLL6 = new DoublyLinkedList();
