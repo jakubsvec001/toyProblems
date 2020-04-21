@@ -194,17 +194,29 @@ DoublyLinkedList.prototype.insertAtPosition = function (position, nodeToInsert) 
 
 DoublyLinkedList.prototype.removeNodesWithValue = function (value) {
   // create context that can be updated
-
+  let context = this.head;
   // while context is not null:
-
+  while (context) {
     // if context.value == value:
+    if (context.value === value) {
+      // if context is head:
+      if (context === this.head) {
+        // delete node, reassign pointers, reassign head
 
-      // delete item from DLL and perform surgery
-      // move contxt to the currently previous node
-    
-    // increment context to next node
-
-  // return this;
+        // do not increment context to next node
+      // else if context is tail:
+      } else if (context = this.tail) {
+        // delete node, reassign pointers, reassign tail
+        
+        break
+      // else in the middle of DLL:
+      } else {
+        // delete node, reassign pointers
+        // do not increment context to next node
+      };
+    };
+  };
+  return this;
 };
 
 DoublyLinkedList.prototype.remove = function (node) {};
