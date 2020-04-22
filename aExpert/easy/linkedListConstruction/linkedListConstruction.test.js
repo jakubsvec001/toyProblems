@@ -102,14 +102,6 @@ describe('insertAfter()', () => {
     expect(expected.forward).toEqual([99, 1, 5, 1000, 2, 555]);
     expect(expected.backward).toEqual([555, 2, 1000, 5, 1, 99]);
   });
-  it('returns undefined if unable to insert', () => {
-    output = DLL7.insertBefore(new Node(2222), new Node(100));
-    expected = DLL7.convertToArray();
-    expect(expected.forward).toEqual([99, 1, 5, 1000, 2, 555]);
-    expect(expected.backward).toEqual([555, 2, 1000, 5, 1, 99]);
-    expect(DLL7.head.value).toBe(99);
-    expect(output).toBeUndefined();
-  });
   it('#1', () => {
     const DLL14 = new DoublyLinkedList();
     const first = new Node(1);
@@ -119,10 +111,12 @@ describe('insertAfter()', () => {
     const fifth = new Node(5);
     const sixth = new Node(6);
     const seventh = new Node(7);
+    DLL14.setHead(first);
     DLL14.insertAfter(first, second);
     DLL14.insertAfter(second, third);
     DLL14.insertAfter(third, fourth);
     DLL14.insertAfter(fourth, fifth);
+    console.log(DLL14.convertToArray())
     expect(DLL14.convertToArray().forward).toEqual([1, 2, 3, 4, 5]);
     expect(DLL14.convertToArray().backward).toEqual([5, 4, 3, 2, 1]);
     DLL14.insertAfter(third, fifth);
@@ -140,7 +134,7 @@ describe('insertAfter()', () => {
     DLL14.insertAfter(fourth, sixth);
     expect(DLL14.convertToArray().forward).toEqual([3, 5, 2, 1, 4, 6]);
     expect(DLL14.convertToArray().backward).toEqual([6, 4, 1, 2, 5, 3]);
-    DLL14.insertAfter(third, sixth);
+    DLL14.insertAfter(second, seventh);
     expect(DLL14.convertToArray().forward).toEqual([3, 5, 2, 7, 1, 4, 6]);
     expect(DLL14.convertToArray().backward).toEqual([6, 4, 1, 7, 2, 5, 3]);
   });
@@ -167,13 +161,6 @@ describe('insertAtPosition()', () => {
     expected = DLL4.convertToArray();
     expect(expected.forward).toEqual([0, 1, 2, 200, 3, 999]);
     expect(expected.backward).toEqual([999, 3, 200, 2, 1, 0]);
-  });
-  it('Edge case - cannot insert, position out of bounds, returns undefined', () => {
-    output = DLL4.insertAtPosition(7, new Node(3000));
-    expected = DLL4.convertToArray();
-    expect(expected.forward).toEqual([0, 1, 2, 200, 3, 999]);
-    expect(expected.backward).toEqual([999, 3, 200, 2, 1, 0]);
-    expect(output).toBeUndefined();
   });
 });
 describe('removeNodesWithValue()', () => {
