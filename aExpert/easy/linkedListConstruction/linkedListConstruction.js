@@ -24,213 +24,6 @@ function DoublyLinkedList() {
   this.tail = null;
 }
 
-DoublyLinkedList.prototype.setHead = function (node) {
-  if (!this.head && !this.tail) {
-    this.head = node;
-    // if only one node in LL, head, implicitly set head to tail and new node to head
-  } else if (this.head && !this.tail) {
-    const temp = this.head;
-    this.head = node;
-    this.tail = temp;
-    this.head.next = this.tail;
-    this.tail.previous = this.head;
-    // if only one node in LL, tail, implicitly set tail to head and new node to tail
-  } else if (!this.head && this.tail) {
-    this.head = node;
-    this.head.next = this.tail;
-    this.tail.previous = this.head;
-    // if both head and tail are occupied, default to making new node head and previous head node to the next node in LL
-  } else {
-    const second = this.head;
-    this.head = node;
-    this.head.next = second;
-    second.previous = this.head;
-  }
-  return this;
-};
-
-DoublyLinkedList.prototype.setTail = function (node) {
-  if (!this.head && !this.tail) {
-    this.tail = node;
-  } else if (this.tail && !this.head) {
-    let temp = this.tail;
-    this.tail = node;
-    this.head = temp;
-    this.head.next = this.tail;
-    this.tail.previous = this.head;
-  } else if (!this.tail && this.head) {
-    this.tail = node;
-    this.tail.previous = this.head;
-    this.head.next = this.tail;
-  } else {
-    const secondToLast = this.tail;
-    this.tail = node;
-    this.tail.previous = secondToLast;
-    secondToLast.next = this.tail;
-  }
-  return node;
-};
-
-DoublyLinkedList.prototype.insertBefore = function (node, nodeToInsert) {
-  let context = this.head;
-  while (context) {
-    // if context === node:
-    if (context.value === node.value) {
-      // if node is head of DLL:
-      if (this.head === context) {
-        // perform surgery to splice nodeToInsert into head
-        nodeToInsert.next = context;
-        context.previous = nodeToInsert;
-        this.head = nodeToInsert;
-        // else
-      } else {
-        // perform surgery to splice nodeToInsert into DLL
-        context.previous.next = nodeToInsert;
-        nodeToInsert.previous = context.previous;
-        context.previous = nodeToInsert;
-        nodeToInsert.next = context;
-      }
-      // return nodeToInsert
-      return nodeToInsert;
-    }
-    // iterate context to next node
-    context = context.next;
-  }
-  return undefined;
-};
-
-DoublyLinkedList.prototype.insertAfter = function (node, nodeToInsert) {
-  let context = this.head;
-  while (context) {
-    // if context === node:
-    if (context.value === node.value) {
-      // if node is head of DLL:
-      if (this.tail === context) {
-        // perform surgery to splice nodeToInsert into tail
-        nodeToInsert.previous = context;
-        context.next = nodeToInsert;
-        this.tail = nodeToInsert;
-        // else
-      } else {
-        // perform surgery to splice nodeToInsert into DLL after target node
-        context.next.previous = nodeToInsert;
-        nodeToInsert.next = context.next;
-        context.next = nodeToInsert;
-        nodeToInsert.previous = context;
-      }
-      // return nodeToInsert
-      return nodeToInsert;
-    }
-    // iterate context to next node
-    context = context.next;
-  }
-  return undefined;
-};
-
-DoublyLinkedList.prototype.insertAtPosition = function (
-  position,
-  nodeToInsert,
-) {
-  let context = this.head;
-  // if inserting into head:
-  if (position === 0) {
-    // perform surgery for head of DLL
-    context.previous = nodeToInsert;
-    nodeToInsert.next = context;
-    this.head = nodeToInsert;
-    return nodeToInsert;
-  }
-  // else continue by creating a position counter
-  let counter = 1;
-  // increment context beyone head
-  context = context.next;
-  while (context) {
-    // if inserting into tail / if (context.next === null && counter+1 === position)
-    if (context.next === null && counter + 1 === position) {
-      // perform surgery for tail of DLL
-      context.next = nodeToInsert;
-      nodeToInsert.previous = context;
-      this.tail = nodeToInsert;
-      return nodeToInsert;
-      // else if (counter === position)
-    } else if (counter === position) {
-      // perform surgery within DLL
-      context.previous.next = nodeToInsert;
-      nodeToInsert.previous = context.previous;
-      context.previous = nodeToInsert;
-      nodeToInsert.next = context;
-      return nodeToInsert;
-    }
-    counter += 1;
-    context = context.next;
-  }
-  // return undefined if unsuccessful;
-  return undefined;
-};
-
-DoublyLinkedList.prototype.removeNodesWithValue = function (value, deleteSingle = false) {
-  // create context that can be updated
-  let context = this.head;
-  // while context is not null:
-  while (context) {
-    // if context.value == value:
-    if (context.value === value) {
-      // if context is head:
-      if (context === this.head) {
-        // delete node, reassign pointers, reassign head
-        // if next node exists and it is the tail:
-        if (context.next && context.next === this.tail) {
-          this.head = this.tail;
-          this.tail = null;
-          this.head.previous = null
-          // else if next node exists and the tail is not next
-        } else if (context.next && context.next !== this.tail) {
-          this.head = context.next;
-          this.head.previous = null;
-          // else if there is no next node:
-        } else {
-          // delete head from DLL
-          this.head = null;
-          break
-        }
-        // do not increment context to next node
-        // else if context is tail:
-      } else if (context === this.tail) {
-        // delete node, reassign pointers, reassign tail
-        if (context.previous && context.previous === this.head) {
-          this.tail = null;
-          break;
-        } else {
-          this.tail = context.previous;
-          this.tail.next = null;
-        }
-        // else in the middle of DLL:
-      } else {
-        // delete node, reassign pointers
-        context.previous.next = context.next;
-        context.next.previous = context.previous;
-        // do not increment context to next node
-      }
-      if (deleteSingle) break;
-    }
-    context = context.next;
-  }
-  return this;
-};
-
-DoublyLinkedList.prototype.remove = function (node) {
-  return this.removeNodesWithValue(node, true);
-};
-
-DoublyLinkedList.prototype.containsNodeWithValue = function (value) {
-  let context = this.head;
-  while (context) {
-    if (context.value === value) return true;
-    context = context.next;
-  }
-  return false;
-};
-
 DoublyLinkedList.prototype.convertToArray = function () {
   // edge case when head is null, tail is null, or both are null
   if (!this.head && !this.tail) {
@@ -258,5 +51,104 @@ DoublyLinkedList.prototype.convertToArray = function () {
   return result;
 };
 
+DoublyLinkedList.prototype.setHead = function (node) {
+  if (!this.head && !this.tail) {
+    this.head = node;
+    // if only one node in LL, head, implicitly set head to tail and new node to head
+  } else if (this.head && !this.tail) {
+    const temp = this.head;
+    this.head = node;
+    this.tail = temp;
+    this.head.next = this.tail;
+    this.tail.previous = this.head;
+    // if only one node in LL, tail, implicitly set tail to head and new node to tail
+  } else if (!this.head && this.tail) {
+    this.head = node;
+    this.head.next = this.tail;
+    this.tail.previous = this.head;
+    // if both head and tail are occupied, default to making new node head and previous head node to the next node in LL
+  } else {
+    const second = this.head;
+    this.head = node;
+    this.head.next = second;
+    second.previous = this.head;
+  }
+  return node;
+};
+
+DoublyLinkedList.prototype.setTail = function (node) {
+  if (!this.head && !this.tail) {
+    this.tail = node;
+  } else if (this.tail && !this.head) {
+    let temp = this.tail;
+    this.tail = node;
+    this.head = temp;
+    this.head.next = this.tail;
+    this.tail.previous = this.head;
+  } else if (!this.tail && this.head) {
+    this.tail = node;
+    this.tail.previous = this.head;
+    this.head.next = this.tail;
+  } else {
+    const secondToLast = this.tail;
+    this.tail = node;
+    this.tail.previous = secondToLast;
+    secondToLast.next = this.tail;
+  }
+  return node;
+};
+
+DoublyLinkedList.prototype.insertBefore = function (node, nodeToInsert) {};
+
+DoublyLinkedList.prototype.insertAfter = function (node, nodeToInsert) {};
+
+DoublyLinkedList.prototype.insertAtPosition = function (position, nodeToInsert) {
+
+};
+
+DoublyLinkedList.prototype.removeNodesWithValue = function (value, deleteSingle = false) {};
+
+DoublyLinkedList.prototype.remove = function (node) {
+
+};
+
+DoublyLinkedList.prototype.containsNodeWithValue = function (value) {
+  
+};
+
+const DLL13 = new DoublyLinkedList();
+const first = new Node(1);
+const second = new Node(2);
+const third = new Node(3);
+const fourth = new Node(4);
+const fifth = new Node(5);
+const sixth = new Node(6);
+const seventh = new Node(7);
+
+DLL13.setHead(first);
+DLL13.insertBefore(first, second);
+console.log(DLL13.convertToArray());
+DLL13.insertBefore(second, third);
+DLL13.insertBefore(third, fourth);
+DLL13.insertBefore(fourth, fifth);
+// console.log(DLL13.convertToArray().forward)//.toEqual([5,4,3,2,1]);
+// console.log(DLL13.convertToArray().backward)//.toEqual([1,2,3,4,5]);
+// DLL13.insertBefore(third, first);
+// console.log(DLL13.convertToArray().forward)//.toEqual([5,4,1,3,2]);
+// console.log(DLL13.convertToArray().backward)//.toEqual([2,3,1,4,5]);
+// DLL13.insertBefore(fifth, second);
+// console.log(DLL13.convertToArray().forward)//.toEqual([2,5,4,1,3]);
+// console.log(DLL13.convertToArray().backward)//.toEqual([3,1,4,5,2]);
+// DLL13.insertBefore(fifth, fourth);
+// console.log(DLL13.convertToArray().forward)//.toEqual([2,4,5,1,3]);
+// console.log(DLL13.convertToArray().backward)//.toEqual([3,1,5,4,2]);
+// DLL13.insertBefore(second, sixth);
+// console.log(DLL13.convertToArray().forward)//.toEqual([6,2,4,5,1,3]);
+// console.log(DLL13.convertToArray().backward)//.toEqual([3,1,5,4,2,6]);
+// DLL13.insertBefore(first, seventh);
+// console.log(DLL13.convertToArray().forward)//.toEqual([6,2,4,5,7,1,3]);
+// console.log(DLL13.convertToArray().backward)//.toEqual([3,1,7,5,4,2,6]);
+// console.log(DLL13.head.value)//.toBe(6);
+// console.log(DLL13.tail.value)//.toBe(3);
 
 module.exports = { DoublyLinkedList, Node };
