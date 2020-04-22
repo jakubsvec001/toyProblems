@@ -34,8 +34,12 @@ class MinHeap {
   insert(value) {}
 
   _swap(i1, i2){
-
+    const heapLength = this.heap.length;
+    if ((i1 < 0 || i1 > heapLength-1) || (i2 < 0 || i2 > heapLength-1)) return this;
+    [this.heap[i2], this.heap[i1]] = [this.heap[i1], this.heap[i2]]
+    return this;
   }
+  
   _getChildren(i){
     if (i > this.heap.length-1 || i < 0) return {'index': undefined, 'value': undefined};
     const left = {},
@@ -59,7 +63,5 @@ class MinHeap {
   }
 }
 
-const h1 = new MinHeap([10,9,8,7,6,5,3,2,1])
-console.log(h1._getParent(0))
 
 module.exports = { MinHeap };
