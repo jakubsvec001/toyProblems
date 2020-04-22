@@ -32,8 +32,17 @@ describe('remove', ()=>{
 })
 
 describe('insert', ()=>{
-  it('#1', () => {
 
+})
+
+describe('_swap()', ()=> {
+  it('#1', () => {
+    const h3 = new MinHeap([1,2,3,4,5]);
+    expect(h3._swap(0, 4).heap).toEqual([5,2,3,4,1])
+    expect(h3._swap(-1, 4).heap).toEqual([5,2,3,4,1])
+    expect(h3._swap(5, 4).heap).toEqual([5,2,3,4,1])
+    expect(h3._swap(0, -1).heap).toEqual([5,2,3,4,1])
+    expect(h3._swap(0, 5).heap).toEqual([5,2,3,4,1])
   })
 })
 
