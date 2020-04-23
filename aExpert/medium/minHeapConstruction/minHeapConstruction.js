@@ -10,7 +10,6 @@ class MinHeap {
   constructor(array) {
     this.heap = this.buildHeap(array);
   }
-  // build a MinHeap with an input array
   buildHeap(array) {
     // find the last parent
     this.heap = array;
@@ -25,7 +24,6 @@ class MinHeap {
     return this.heap;
   }
 
-  //use with insertion and deletion
   siftDown(parent) {
     let minChild = this._getMinChildOfIndex(parent.index);
     if (minChild) {
@@ -103,8 +101,5 @@ class MinHeap {
   }
 }
 
-const h1 = new MinHeap([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
-
-console.log(h1.heap)
 
 module.exports = { MinHeap };
