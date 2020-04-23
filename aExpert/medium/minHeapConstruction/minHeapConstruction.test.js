@@ -22,7 +22,9 @@ describe('siftUp', ()=>{
 
 describe('peek', ()=>{
   it('#1', () => {
-
+    const h5 = new MinHeap([10,9,8,7,6,5,4,3,2,1])
+    expect(h5.heap).toEqual([1,2,4,3,6,5,8,10,7,9])
+    expect(h5.peek()).toBe(1)
   })
 })
 
