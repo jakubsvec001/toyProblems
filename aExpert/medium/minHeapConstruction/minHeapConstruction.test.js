@@ -46,7 +46,7 @@ describe('_swap()', ()=> {
   })
 })
 
-describe.only('_getChildrenOfIndex(), _getParentOfIndex()', () => {
+describe('_getChildrenOfIndex(), _getParentOfIndex()', () => {
   it('#1', () => {
     const h2 = new MinHeap([1,2,3,4,5]);
     expect(h2._getChildrenOfIndex(0).left).toEqual({"index": 1, "value": 2});
@@ -55,5 +55,17 @@ describe.only('_getChildrenOfIndex(), _getParentOfIndex()', () => {
     expect(h2._getParentOfIndex(4)).toEqual({"index": 1, "value": 2})
     expect(h2._getParentOfIndex(5)).toEqual({"index": undefined, "value": undefined})
     expect(h2._getParentOfIndex(-1)).toEqual({"index": undefined, "value": undefined})
+  })
+});
+
+describe('_getMinChildOfIndex()', () => {
+  it('#1', () => {
+    const h2 = new MinHeap([10,9,8,7,6,5,4,3,2,1]);
+    expect(h2._getMinChildOfIndex(11)).toEqual({"index": undefined, "value": undefined})
+    expect(h2._getMinChildOfIndex(-1)).toEqual({"index": undefined, "value": undefined})
+    expect(h2._getMinChildOfIndex(0)).toEqual({"index": 2, "value": 8});
+    expect(h2._getMinChildOfIndex(3)).toEqual({"index": 8, "value": 2});
+    expect(h2._getMinChildOfIndex(4)).toEqual({"index": 9, "value": 1})
+    expect(h2._getMinChildOfIndex(9)).toBeNull();
   })
 });
