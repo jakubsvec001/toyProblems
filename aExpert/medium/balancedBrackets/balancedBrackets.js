@@ -1,5 +1,6 @@
 
 const balancedBrackets = (str) => {
+  if (str === undefined || str.length === 0) return true;
   // initialize a stack
   const stack = [];
   const open = {'(':1,'[':2,'{':3};
