@@ -36,7 +36,16 @@ class MinHeap {
   }
 
   //during insertion and deletion
-  siftUp() {}
+  siftUp(node) {
+    const parent = this._getParentOfIndex(node.index);
+    if (parent) {
+      if (node.value < parent.value) {
+        this._swap(node.index, parent.index)
+        node = {'index': parent.index, 'value': node.value}
+        this.siftUp(node)
+      }
+    }
+  }
 
   // peek at the heap's minumum/ root value
   peek() {
@@ -47,7 +56,11 @@ class MinHeap {
   remove() {}
 
   //insert integer into heap. Insert at the end, then sift up
-  insert(value) {}
+  insert(value) {
+    this.heap.push(value)
+    this.siftUp({'index': this.heap.length-1, 'value': this.heap[this.heap.length-1]})
+    return this;
+  }
 
   _swap(i1, i2) {
     const heapLength = this.heap.length;
