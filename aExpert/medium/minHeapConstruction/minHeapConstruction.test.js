@@ -9,7 +9,8 @@ describe('buildHeap', ()=>{
 
 describe('siftDown', ()=>{
   it('#1', () => {
-
+    const h4 = new MinHeap([10,9,8,7,6,5,4,3,2,1])
+    expect(h4.heap).toEqual([1,2,4,3,6,5,8,10,7,9])
   })
 })
 
@@ -63,9 +64,9 @@ describe('_getMinChildOfIndex()', () => {
     const h2 = new MinHeap([10,9,8,7,6,5,4,3,2,1]);
     expect(h2._getMinChildOfIndex(11)).toEqual({"index": undefined, "value": undefined})
     expect(h2._getMinChildOfIndex(-1)).toEqual({"index": undefined, "value": undefined})
-    expect(h2._getMinChildOfIndex(0)).toEqual({"index": 2, "value": 8});
-    expect(h2._getMinChildOfIndex(3)).toEqual({"index": 8, "value": 2});
-    expect(h2._getMinChildOfIndex(4)).toEqual({"index": 9, "value": 1})
+    expect(h2._getMinChildOfIndex(0)).toEqual({"index": 1, "value": 2});
+    expect(h2._getMinChildOfIndex(3)).toEqual({"index": 8, "value": 7});
+    expect(h2._getMinChildOfIndex(4)).toEqual({"index": 9, "value": 9})
     expect(h2._getMinChildOfIndex(9)).toBeNull();
   })
 });
