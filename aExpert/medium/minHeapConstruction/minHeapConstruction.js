@@ -19,16 +19,23 @@ class MinHeap {
     let right;
     let minChild;
     while (lastParent.value) {
-      // get children objects
-      minChild = this._getMinChildOfIndex(lastParent.index);
-      // if (left.value < right.value)
-      lastParent = this._getParentOfIndex(lastParent.index);
+      this.siftDown(lastParent);
+      lastParent = {'index': lastParent.index-1, 'value': this.heap[lastParent.index-1]};
     }
     return this.heap;
   }
 
   //use with insertion and deletion
-  siftDown() {}
+  siftDown(parent) {
+    let minChild = this._getMinChildOfIndex(parent.index);
+    if (minChild) {
+      if (minChild.value < parent.value) {
+        this._swap(minChild.index, parent.index);
+        parent = {'index': minChild.index, 'value': parent.value}
+        this.siftDown(parent)
+      }
+    }
+  }
 
   //during insertion and deletion
   siftUp() {}
@@ -54,7 +61,7 @@ class MinHeap {
     if (i > this.heap.length - 1 || i < 0)
       return { index: undefined, value: undefined };
     const left = {},
-          right = {};
+      right = {};
     left.index = 2 * i + 1;
     left.value = this.heap[left.index];
     right.index = 2 * i + 2;
@@ -75,6 +82,8 @@ class MinHeap {
   }
 
   _getMinChildOfIndex(parentIndex) {
+    if (parentIndex > this.heap.length - 1 || parentIndex < 0)
+      return { index: undefined, value: undefined };
     const { left, right } = this._getChildrenOfIndex(parentIndex);
     let minChild;
     // if both children present
@@ -96,6 +105,6 @@ class MinHeap {
 
 const h1 = new MinHeap([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
 
-console.log(h1._getMinChildOfIndex(4));
+console.log(h1.heap)
 
 module.exports = { MinHeap };
