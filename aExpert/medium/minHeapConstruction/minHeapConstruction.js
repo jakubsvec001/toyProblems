@@ -53,7 +53,16 @@ class MinHeap {
   }
 
   //remove the minimum value
-  remove() {}
+  remove() {
+    // swap the root with the tail
+    const length = this.heap.length;
+    this._swap(0, length-1);
+    // remove the tail
+    this.heap.pop()
+    // sift down the root
+    this.siftDown({'index': 0, 'value': this.heap[0]})
+    return this;
+  }
 
   //insert integer into heap. Insert at the end, then sift up
   insert(value) {
