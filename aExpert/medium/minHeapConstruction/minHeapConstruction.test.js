@@ -27,7 +27,12 @@ describe('peek', () => {
 });
 
 describe('remove', () => {
-  it('#1', () => {});
+  it('#1', () => {
+    const h7 = new MinHeap([10, 9, 8, 7, 6, 5, 4, 3, 2, 1]);
+    expect(h7.heap).toEqual([1, 2, 4, 3, 6, 5, 8, 10, 7, 9]);
+    h7.remove();
+    expect(h7.heap).toEqual([2, 3, 4, 7, 6, 5, 8, 10, 9])
+  });
 });
 
 describe('insert', () => {
