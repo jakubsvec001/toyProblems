@@ -39,7 +39,9 @@ class MinHeap {
   siftUp() {}
 
   // peek at the heap's minumum/ root value
-  peek() {}
+  peek() {
+    return this.heap[0]
+  }
 
   //remove the minimum value
   remove() {}
