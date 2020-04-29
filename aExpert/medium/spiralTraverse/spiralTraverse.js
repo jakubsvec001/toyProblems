@@ -12,36 +12,7 @@
  */
 
 const spiralTraverse = (array) => {
-  const rowLength = array[0].length;
-  const colLength = array.length;
-  let colStart = 0;
-  let colEnd = rowLength - 1;
-  let rowStart = 0;
-  let rowEnd = colLength - 1;
-  const result = [];
-  while (colStart <= Math.floor(colLength / 2) || rowStart <= Math.floor(rowLength / 2)){
-    // iterate the top row
-    for (let i = colStart; i <= colEnd; i += 1) {
-      result.push(array[rowStart][i])
-    }
-    // iterate right
-    for (let j = rowStart; j < rowEnd; j += 1) {
-      result.push(array[j][colEnd])
-    }
-    // iterate bottom
-    for (let i = colEnd; i >= colStart; i -= 1) {
-      result.push(array[rowEnd][i])
-    }
-    // iterate left
-    colEnd -= 1;
-    rowStart += 1;
-    for (let j = rowEnd; j >= rowStart; j -= 1) {
-      result.push(array[j][colStart]);
-    }
-    colStart += 1;
-    rowEnd -= 1;
-  }
-  return result;
+
 }
 
 const array = [
