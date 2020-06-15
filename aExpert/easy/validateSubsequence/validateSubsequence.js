@@ -6,6 +6,9 @@ array2 = [1,6,-1,10]
 output = true
 */
 
+
+// Space complexity: O(1)
+// Time complexity: O(n)
 const validateSubsequence = (array1, array2) => {
   let i = 0;
   let val1;
