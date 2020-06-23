@@ -1,31 +1,27 @@
-var nodeDepths = function (root) {
-    var total = 0;
-    var traverse = function (node, depth) {
-        if (!node) {
+"use strict";
+const nodeDepths = (root) => {
+    let total = 0;
+    if (!root.left) {
+        return undefined;
+    }
+    const traverse = (node, depth) => {
+        if (node) {
+            depth += 1;
             total += depth;
+            [node === null || node === void 0 ? void 0 : node.left, node === null || node === void 0 ? void 0 : node.right].forEach((item) => {
+                traverse(item, depth);
+            });
         }
-        depth += 1;
-        traverse(node.left, depth);
-        traverse(node.right, depth);
     };
-    return 1;
+    traverse(root, -1);
+    return total;
 };
-var BinaryTree = (function () {
-    function BinaryTree(value) {
+class BinaryTree {
+    constructor(value) {
         this.value = value;
         this.left = null;
         this.right = null;
     }
-    return BinaryTree;
-}());
-var node1 = new BinaryTree(1);
-node1.left = new BinaryTree(2);
-node1.right = new BinaryTree(3);
-node1.left.left = new BinaryTree(4);
-node1.left.right = new BinaryTree(5);
-node1.left.left.left = new BinaryTree(8);
-node1.left.left.right = new BinaryTree(9);
-node1.right.left = new BinaryTree(6);
-node1.right.right = new BinaryTree(7);
-console.log(nodeDepths(node1));
-module.exports = { nodeDepths: nodeDepths, BinaryTree: BinaryTree };
+}
+module.exports = { nodeDepths, BinaryTree };
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibm9kZURlcHRocy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIm5vZGVEZXB0aHMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQVVBLE1BQU0sVUFBVSxHQUFHLENBQUMsSUFBZ0IsRUFBc0IsRUFBRTtJQUMxRCxJQUFJLEtBQUssR0FBVyxDQUFDLENBQUM7SUFDdEIsSUFBSSxDQUFDLElBQUksQ0FBQyxJQUFJLEVBQUM7UUFDYixPQUFPLFNBQVMsQ0FBQztLQUNsQjtJQUNELE1BQU0sUUFBUSxHQUFHLENBQUMsSUFBdUIsRUFBRSxLQUFhLEVBQVEsRUFBRTtRQUNoRSxJQUFJLElBQUksRUFBRTtZQUNSLEtBQUssSUFBSSxDQUFDLENBQUM7WUFDWCxLQUFLLElBQUksS0FBSyxDQUFDO1lBQ2YsQ0FBQyxJQUFJLGFBQUosSUFBSSx1QkFBSixJQUFJLENBQUUsSUFBSSxFQUFFLElBQUksYUFBSixJQUFJLHVCQUFKLElBQUksQ0FBRSxLQUFLLENBQUMsQ0FBQyxPQUFPLENBQUMsQ0FBQyxJQUFJLEVBQUUsRUFBRTtnQkFDekMsUUFBUSxDQUFDLElBQUksRUFBRSxLQUFLLENBQUMsQ0FBQztZQUN4QixDQUFDLENBQUMsQ0FBQTtTQUNIO0lBQ0gsQ0FBQyxDQUFBO0lBQ0QsUUFBUSxDQUFDLElBQUksRUFBRSxDQUFDLENBQUMsQ0FBQyxDQUFBO0lBQ2xCLE9BQU8sS0FBSyxDQUFBO0FBQ2QsQ0FBQyxDQUFBO0FBSUQsTUFBTSxVQUFVO0lBSWQsWUFBbUIsS0FBYTtRQUM5QixJQUFJLENBQUMsS0FBSyxHQUFHLEtBQUssQ0FBQztRQUNuQixJQUFJLENBQUMsSUFBSSxHQUFHLElBQUksQ0FBQztRQUNqQixJQUFJLENBQUMsS0FBSyxHQUFHLElBQUksQ0FBQztJQUNwQixDQUFDO0NBQ0Y7QUFJRCxNQUFNLENBQUMsT0FBTyxHQUFHLEVBQUUsVUFBVSxFQUFFLFVBQVUsRUFBRSxDQUFBIn0=
