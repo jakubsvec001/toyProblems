@@ -10,7 +10,7 @@
 
 const nodeDepths = (root: BinaryTree): number | undefined => {
   let total: number = 0;
-  if (!root.left){
+  if (!root.value){
     return undefined;
   }
   const traverse = (node: BinaryTree | null, depth: number): void => {
