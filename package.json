@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/jakubsvec001/toyProblems#readme",
   "devDependencies": {
+    "@types/node": "^14.0.13",
     "jest": "^25.3.0"
   }
 }
