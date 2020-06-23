@@ -1,29 +1,27 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const { BinaryTree, nodeDepths } = require('./nodeDepths');
-
-console.log(BinaryTree)
-
 describe('base case', () => {
-  const tree1 = new BinaryTree(1);
-  tree1.left = new BinaryTree(2);
-  tree1.right = new BinaryTree(3);
-  tree1.left.left = new BinaryTree(4);
-  tree1.left.right = new BinaryTree(5);
-  tree1.left.left.left = new BinaryTree(8);
-  tree1.left.left.right = new BinaryTree(9);
-  tree1.right.left = new BinaryTree(6);
-  tree1.right.right = new BinaryTree(7);
-
-  it('simple tree', () => {
-    expect(nodeDepths(tree1)).toBe(16);
-  });
-  it('only root node in tree', ()=> {
-    const tree2 = new BinaryTree(1);
-    expect(nodeDepths(tree2)).toBe(0)
-  })
-})
-
+    const tree1 = new BinaryTree(1);
+    tree1.left = new BinaryTree(2);
+    tree1.right = new BinaryTree(3);
+    tree1.left.left = new BinaryTree(4);
+    tree1.left.right = new BinaryTree(5);
+    tree1.left.left.left = new BinaryTree(8);
+    tree1.left.left.right = new BinaryTree(9);
+    tree1.right.left = new BinaryTree(6);
+    tree1.right.right = new BinaryTree(7);
+    it('simple tree', () => {
+        expect(nodeDepths(tree1)).toBe(16);
+    });
+    it('only root node in tree', () => {
+        const tree2 = new BinaryTree(1);
+        expect(nodeDepths(tree2)).toBe(0);
+    });
+});
 describe('edge case', () => {
-  it('bad input', () => {
-    expect(nodeDepths(0)).toBe(undefined)
-  } )
-})
+    it('bad input', () => {
+        expect(nodeDepths('string')).toBe(undefined);
+    });
+});
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibm9kZURlcHRocy50ZXN0LmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsibm9kZURlcHRocy50ZXN0LnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBRUEsTUFBTSxFQUFFLFVBQVUsRUFBRSxVQUFVLEVBQUUsR0FBRyxPQUFPLENBQUMsY0FBYyxDQUFDLENBQUM7QUFHM0QsUUFBUSxDQUFDLFdBQVcsRUFBRSxHQUFHLEVBQUU7SUFDekIsTUFBTSxLQUFLLEdBQUcsSUFBSSxVQUFVLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDaEMsS0FBSyxDQUFDLElBQUksR0FBRyxJQUFJLFVBQVUsQ0FBQyxDQUFDLENBQUMsQ0FBQztJQUMvQixLQUFLLENBQUMsS0FBSyxHQUFHLElBQUksVUFBVSxDQUFDLENBQUMsQ0FBQyxDQUFDO0lBQ2hDLEtBQUssQ0FBQyxJQUFJLENBQUMsSUFBSSxHQUFHLElBQUksVUFBVSxDQUFDLENBQUMsQ0FBQyxDQUFDO0lBQ3BDLEtBQUssQ0FBQyxJQUFJLENBQUMsS0FBSyxHQUFHLElBQUksVUFBVSxDQUFDLENBQUMsQ0FBQyxDQUFDO0lBQ3JDLEtBQUssQ0FBQyxJQUFJLENBQUMsSUFBSSxDQUFDLElBQUksR0FBRyxJQUFJLFVBQVUsQ0FBQyxDQUFDLENBQUMsQ0FBQztJQUN6QyxLQUFLLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxLQUFLLEdBQUcsSUFBSSxVQUFVLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDMUMsS0FBSyxDQUFDLEtBQUssQ0FBQyxJQUFJLEdBQUcsSUFBSSxVQUFVLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFDckMsS0FBSyxDQUFDLEtBQUssQ0FBQyxLQUFLLEdBQUcsSUFBSSxVQUFVLENBQUMsQ0FBQyxDQUFDLENBQUM7SUFFdEMsRUFBRSxDQUFDLGFBQWEsRUFBRSxHQUFHLEVBQUU7UUFDckIsTUFBTSxDQUFDLFVBQVUsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxFQUFFLENBQUMsQ0FBQztJQUNyQyxDQUFDLENBQUMsQ0FBQztJQUNILEVBQUUsQ0FBQyx3QkFBd0IsRUFBRSxHQUFFLEVBQUU7UUFDL0IsTUFBTSxLQUFLLEdBQUcsSUFBSSxVQUFVLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFDaEMsTUFBTSxDQUFDLFVBQVUsQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQTtJQUNuQyxDQUFDLENBQUMsQ0FBQTtBQUNKLENBQUMsQ0FBQyxDQUFBO0FBRUYsUUFBUSxDQUFDLFdBQVcsRUFBRSxHQUFHLEVBQUU7SUFDekIsRUFBRSxDQUFDLFdBQVcsRUFBRSxHQUFHLEVBQUU7UUFDbkIsTUFBTSxDQUFDLFVBQVUsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxTQUFTLENBQUMsQ0FBQTtJQUM5QyxDQUFDLENBQUUsQ0FBQTtBQUNMLENBQUMsQ0FBQyxDQUFBIn0=
