@@ -1,10 +1,10 @@
-const { getNthFib } = require('./nthFibonacci.js');
-
+"use strict";
+const { memoizedGetNthFib } = require('./nthFibonacci');
 describe('base case', () => {
-  it('1', () => {
-    expect(getNthFib(0)).toBe(0);
-    expect(getNthFib(1)).toBe(0);
-    expect(getNthFib(2)).toBe(1);
-  })
+    it('1', () => {
+        expect(memoizedGetNthFib(0)).toBe(0);
+        expect(memoizedGetNthFib(1)).toBe(0);
+        expect(memoizedGetNthFib(2)).toBe(1);
+    });
 });
-
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibnRoRmlib25hY2NpLnRlc3QuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJudGhGaWJvbmFjY2kudGVzdC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUEsTUFBTSxFQUFFLGlCQUFpQixFQUFFLEdBQUcsT0FBTyxDQUFDLGdCQUFnQixDQUFDLENBQUM7QUFFeEQsUUFBUSxDQUFDLFdBQVcsRUFBRSxHQUFHLEVBQUU7SUFDekIsRUFBRSxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUU7UUFDWCxNQUFNLENBQUMsaUJBQWlCLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFDLENBQUM7UUFDckMsTUFBTSxDQUFDLGlCQUFpQixDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDO1FBQ3JDLE1BQU0sQ0FBQyxpQkFBaUIsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLElBQUksQ0FBQyxDQUFDLENBQUMsQ0FBQztJQUN2QyxDQUFDLENBQUMsQ0FBQztBQVNMLENBQUMsQ0FBQyxDQUFDIn0=
