@@ -1,58 +1,101 @@
-
-/**
- * take in an array of size n*m. The spiral starts at the top left corner of the array [0,0] and processeds in a spiral pattern all the way until every element has been visited
- * 
- *     
- * array = [[ 1, 2, 3, 4],
- *          [12,13,14, 5],
- *          [11,16,15, 6],
- *          [10, 9, 8, 7]]
- * 
- * result = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
- */
-
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 const spiralTraverse = (array) => {
-  const rowLength = array[0].length;
-  const colLength = array.length;
-  let colStart = 0;
-  let colEnd = rowLength - 1;
-  let rowStart = 0;
-  let rowEnd = colLength - 1;
-  const result = [];
-  while (colStart <= Math.floor(colLength / 2) || rowStart <= Math.floor(rowLength / 2)){
-    // iterate the top row
-    for (let i = colStart; i <= colEnd; i += 1) {
-      result.push(array[rowStart][i])
+    let result = [];
+    let rStart = 0;
+    let cStart = 0;
+    let rEnd = array.length - 1;
+    let cEnd = array[0].length - 1;
+    let step = 1;
+    let i;
+    const processes = {
+        right: () => {
+            for (i = cStart; i <= cEnd; i += 1) {
+                result.push(array[rStart][i]);
+            }
+            rStart += 1;
+        },
+        down: () => {
+            for (i = rStart; i <= rEnd; i += 1) {
+                result.push(array[i][cEnd]);
+            }
+            cEnd -= 1;
+        },
+        left: () => {
+            for (i = cEnd; i >= cStart; i -= 1) {
+                result.push(array[rEnd][i]);
+            }
+            rEnd -= 1;
+        },
+        up: () => {
+            for (let i = rEnd; i >= rStart; i -= 1) {
+                result.push(array[i][cStart]);
+            }
+            cStart += 1;
+        },
+    };
+    while (rStart <= rEnd && cStart <= cEnd) {
+        if (step % 4 === 1)
+            processes.right();
+        else if (step % 4 === 2)
+            processes.down();
+        else if (step % 4 === 3)
+            processes.left();
+        else if (step % 4 === 0)
+            processes.up();
+        step += 1;
     }
-    // iterate right
-    for (let j = rowStart; j < rowEnd; j += 1) {
-      result.push(array[j][colEnd])
-    }
-    // iterate bottom
-    for (let i = colEnd; i >= colStart; i -= 1) {
-      result.push(array[rowEnd][i])
-    }
-    // iterate left
-    colEnd -= 1;
-    rowStart += 1;
-    for (let j = rowEnd; j >= rowStart; j -= 1) {
-      result.push(array[j][colStart]);
-    }
-    colStart += 1;
-    rowEnd -= 1;
-  }
-  return result;
-}
-
-const array = [
-  [1, 2, 3, 4, 5],
-  [14, 15, 16, 17, 6],
-  [13, 20, 19, 18, 7],
-  [12, 11, 10, 9, 8],
-];
-const result = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-
-console.log(spiralTraverse(array))
-
-
-module.exports = { spiralTraverse }
+    return result;
+};
+const ex1 = {
+    matrix: [
+        [1, 2, 3, 4, 5],
+        [14, 15, 16, 17, 6],
+        [13, 20, 19, 18, 7],
+        [12, 11, 10, 9, 8],
+    ],
+    output: [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+    ],
+};
+const ex2 = {
+    matrix: [
+        [1, 2, 3, 4],
+        [12, 13, 14, 5],
+        [11, 16, 15, 6],
+        [10, 9, 8, 7],
+    ],
+    output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+};
+const ex3 = {
+    matrix: [
+        [1, 2, 3, 4],
+        [14, 15, 16, 5],
+        [13, 20, 21, 6],
+        [12, 19, 18, 7],
+        [11, 10, 9, 8]
+    ],
+    output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+};
+console.log(spiralTraverse(ex2.matrix));
+exports.default = spiralTraverse;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoic3BpcmFsVHJhdmVyc2UuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJzcGlyYWxUcmF2ZXJzZS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQWdCQSxNQUFNLGNBQWMsR0FBRyxDQUFDLEtBQVksRUFBVyxFQUFFO0lBQy9DLElBQUksTUFBTSxHQUFZLEVBQUUsQ0FBQztJQUN6QixJQUFJLE1BQU0sR0FBRyxDQUFDLENBQUM7SUFDZixJQUFJLE1BQU0sR0FBRyxDQUFDLENBQUM7SUFDZixJQUFJLElBQUksR0FBRyxLQUFLLENBQUMsTUFBTSxHQUFHLENBQUMsQ0FBQztJQUM1QixJQUFJLElBQUksR0FBRyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsTUFBTSxHQUFFLENBQUMsQ0FBQztJQUM5QixJQUFJLElBQUksR0FBRyxDQUFDLENBQUM7SUFDYixJQUFJLENBQUMsQ0FBQztJQUdOLE1BQU0sU0FBUyxHQUFHO1FBR2hCLEtBQUssRUFBRyxHQUFHLEVBQUU7WUFDWCxLQUFLLENBQUMsR0FBRyxNQUFNLEVBQUUsQ0FBQyxJQUFJLElBQUksRUFBRSxDQUFDLElBQUksQ0FBQyxFQUFFO2dCQUNsQyxNQUFNLENBQUMsSUFBSSxDQUFDLEtBQUssQ0FBQyxNQUFNLENBQUMsQ0FBQyxDQUFDLENBQUMsQ0FBQyxDQUFBO2FBQzlCO1lBQ0QsTUFBTSxJQUFJLENBQUMsQ0FBQztRQUNkLENBQUM7UUFHRCxJQUFJLEVBQUUsR0FBRyxFQUFFO1lBQ1QsS0FBSyxDQUFDLEdBQUcsTUFBTSxFQUFFLENBQUMsSUFBSSxJQUFJLEVBQUUsQ0FBQyxJQUFJLENBQUMsRUFBRTtnQkFDbEMsTUFBTSxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQyxDQUFDLENBQUMsSUFBSSxDQUFDLENBQUMsQ0FBQzthQUM3QjtZQUNELElBQUksSUFBSSxDQUFDLENBQUM7UUFDWixDQUFDO1FBR0QsSUFBSSxFQUFFLEdBQUcsRUFBRTtZQUNULEtBQUssQ0FBQyxHQUFHLElBQUks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LEVBQUUsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLENBQUMsQ0FBQztRQUNmLENBQUMsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLEVBQUUsQ0FBQyxDQUFDO1FBQ2YsQ0FBQyxFQUFFLEVBQUUsRUFBRSxFQUFFLEVBQUUsRUFBRSxDQUFDLENBQUM7UUFDZixDQUFDLEVBQUUsRUFBRSxFQUFFLEVBQUUsQ0FBQyxFQUFFLENBQUMsQ0FBQztLQUNmO0lBQ0QsTUFBTSxFQUFFLENBQUMsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLEVBQUUsQ0FBQyxFQUFFLENBQUMsRUFBRSxDQUFDLEVBQUUsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLEVBQUUsRUFBRSxFQUFFLEVBQUUsQ0FBQztDQUNoRixDQUFDO0FBRUYsT0FBTyxDQUFDLEdBQUcsQ0FBQyxjQUFjLENBQUMsR0FBRyxDQUFDLE1BQU0sQ0FBQyxDQUFDLENBQUE7QUFFdkMsa0JBQWUsY0FBYyxDQUFDIn0=
