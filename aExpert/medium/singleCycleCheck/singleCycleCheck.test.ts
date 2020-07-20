@@ -5,6 +5,9 @@ describe('hasSingleCycle', () => {
   it('1', () => {
     expect(hasSingleCycle([2, 3, 1, -4, -4, 2])).toBe(true);
   });
+  it('2', () => {
+    expect(hasSingleCycle([1, 1, 1, 1, 2])).toBe(false);
+  });
 });
 
 describe('move', () => {

@@ -56,3 +56,5 @@ const hasSingleCycle = (array: number[]): boolean => {
 };
 
 export default hasSingleCycle;
+
+console.log(hasSingleCycle([1,1,1,1,2]))
