@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 // each item in a given array (non-empty) represents the next iteration's move. Return a boolean indicating whether the integers provided in the array form a sequence that visits each index once. Then array wraps, such that moving beyond the bounds of the array wraps to the other side;
 
 
-export const every = (arr) => {
+export const every = (arr:boolean[]) => {
   return arr.reduce((prev, next) => {
     return prev && next;
   }, true)
