@@ -52,6 +52,4 @@ const subarraySort = (array:number[]):[number, number] => {
   return [minIdx, maxIdx];
 }
 
-console.log(subarraySort([0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89])
-
 export default subarraySort;
