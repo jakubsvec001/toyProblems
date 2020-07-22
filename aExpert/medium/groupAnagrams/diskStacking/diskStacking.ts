@@ -11,7 +11,7 @@ export const isLarger = (current:number[], target:number[]) => {
 export const totalHeight = (stack:number[][]) => {
   let total = 0;
   stack.forEach((arr)=>{
-    total += arr[1]
+    total += arr[2]
   })
   return total;
 }
@@ -55,7 +55,5 @@ const diskStacking = (inputArray:number[][]):number[][] => {
   traverse([]);
   return maxStack;
 }
-
-console.log(diskStacking([[2,1,2], [3,2,3], [2,2,8], [2,3,4], [1,3,1], [4,4,5]]))
 
 export default diskStacking;
