@@ -1,18 +1,18 @@
 "use strict";
-// given an array X of unique integers, a powerset function returns the set of all subsets of X.
-exports.__esModule = true;
-var powerset = function (array) {
-    var subsets = [[]];
-    var ele;
-    for (var i = 0; i < array.length; i += 1) {
+Object.defineProperty(exports, "__esModule", { value: true });
+const powerset = (array) => {
+    const subsets = [[]];
+    let ele;
+    for (let i = 0; i < array.length; i += 1) {
         ele = array[i];
-        var length_1 = subsets.length;
-        for (var j = 0; j < length_1; j += 1) {
-            var currentSubset = subsets[j];
+        const length = subsets.length;
+        for (let j = 0; j < length; j += 1) {
+            const currentSubset = subsets[j];
             subsets.push(currentSubset.concat(ele));
         }
     }
     return subsets;
 };
 console.log(powerset([1, 2, 3, 4]));
-exports["default"] = powerset;
+exports.default = powerset;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicG93ZXJzZXQuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJwb3dlcnNldC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOztBQUVBLE1BQU0sUUFBUSxHQUFHLENBQUMsS0FBYyxFQUFhLEVBQUU7SUFDN0MsTUFBTSxPQUFPLEdBQUcsQ0FBQyxFQUFFLENBQUMsQ0FBQztJQUNyQixJQUFJLEdBQU8sQ0FBQztJQUVaLEtBQUssSUFBSSxDQUFDLEdBQUcsQ0FBQyxFQUFFLENBQUMsR0FBRyxLQUFLLENBQUMsTUFBTSxFQUFFLENBQUMsSUFBSSxDQUFDLEVBQUU7UUFDeEMsR0FBRyxHQUFHLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQztRQUNmLE1BQU0sTUFBTSxHQUFHLE9BQU8sQ0FBQyxNQUFNLENBQUM7UUFDOUIsS0FBSyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxHQUFHLE1BQU0sRUFBRSxDQUFDLElBQUksQ0FBQyxFQUFFO1lBQ2xDLE1BQU0sYUFBYSxHQUFHLE9BQU8sQ0FBQyxDQUFDLENBQUMsQ0FBQztZQUNqQyxPQUFPLENBQUMsSUFBSSxDQUFDLGFBQWEsQ0FBQyxNQUFNLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQTtTQUN4QztLQUNGO0lBQ0QsT0FBTyxPQUFPLENBQUM7QUFDakIsQ0FBQyxDQUFBO0FBR0QsT0FBTyxDQUFDLEdBQUcsQ0FBQyxRQUFRLENBQUMsQ0FBQyxDQUFDLEVBQUMsQ0FBQyxFQUFDLENBQUMsRUFBQyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUE7QUFFaEMsa0JBQWUsUUFBUSxDQUFDIn0=

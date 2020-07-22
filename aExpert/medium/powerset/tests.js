@@ -1,10 +1,9 @@
 "use strict";
-exports.__esModule = true;
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.tests = exports.deepSort = void 0;
-exports.deepSort = function (array) {
-    // first sort by length;
-    var byLength = {};
-    array.forEach(function (item, i) {
+exports.deepSort = (array) => {
+    const byLength = {};
+    array.forEach((item, i) => {
         if (!byLength[item.length]) {
             byLength[item.length] = [item];
         }
@@ -12,27 +11,25 @@ exports.deepSort = function (array) {
             byLength[item.length].push(item);
         }
     });
-    // sort within each length
-    var result = [];
-    for (var key in byLength) {
-        var values = byLength[key];
-        values.sort(function (a, b) {
-            for (var i = 0; i < a.length; i += 1) {
+    const result = [];
+    for (const key in byLength) {
+        const values = byLength[key];
+        values.sort((a, b) => {
+            for (let i = 0; i < a.length; i += 1) {
                 if (a[i] !== b[i]) {
                     return a[i] > b[i];
                 }
             }
         });
-        result.push.apply(result, values);
+        result.push(...values);
     }
     return result;
 };
 exports.tests = {
     1: {
         input: [1, 2, 3],
-        output: [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
+        output: [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]],
     },
     2: {}
 };
-// console.log(deepSort([[2,3],[],[2],[1,2,3],[1,2],[1,3],[3],[1]));
-// console.log(tests[1].output)
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoidGVzdHMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJ0ZXN0cy50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFBYSxRQUFBLFFBQVEsR0FBRyxDQUFDLEtBQWdCLEVBQUUsRUFBRTtJQU0zQyxNQUFNLFFBQVEsR0FBYSxFQUFFLENBQUE7SUFDN0IsS0FBSyxDQUFDLE9BQU8sQ0FBQyxDQUFDLElBQUksRUFBRSxDQUFDLEVBQUUsRUFBRTtRQUN4QixJQUFJLENBQUMsUUFBUSxDQUFDLElBQUksQ0FBQyxNQUFNLENBQUMsRUFBRTtZQUMxQixRQUFRLENBQUMsSUFBSSxDQUFDLE1BQU0sQ0FBQyxHQUFHLENBQUMsSUFBSSxDQUFDLENBQUM7U0FDaEM7YUFBTTtZQUNMLFFBQVEsQ0FBQyxJQUFJLENBQUMsTUFBTSxDQUFDLENBQUMsSUFBSSxDQUFDLElBQUksQ0FBQyxDQUFDO1NBQ2xDO0lBQ0gsQ0FBQyxDQUFDLENBQUE7SUFFRixNQUFNLE1BQU0sR0FBRyxFQUFFLENBQUM7SUFDbEIsS0FBSyxNQUFNLEdBQUcsSUFBSSxRQUFRLEVBQUU7UUFDMUIsTUFBTSxNQUFNLEdBQUcsUUFBUSxDQUFDLEdBQUcsQ0FBQyxDQUFDO1FBQzdCLE1BQU0sQ0FBQyxJQUFJLENBQUMsQ0FBQyxDQUFVLEVBQUUsQ0FBVSxFQUFFLEVBQUU7WUFDckMsS0FBSyxJQUFJLENBQUMsR0FBRyxDQUFDLEVBQUUsQ0FBQyxHQUFHLENBQUMsQ0FBQyxNQUFNLEVBQUUsQ0FBQyxJQUFJLENBQUMsRUFBQztnQkFDbkMsSUFBSSxDQUFDLENBQUMsQ0FBQyxDQUFDLEtBQUssQ0FBQyxDQUFDLENBQUMsQ0FBQyxFQUFFO29CQUNqQixPQUFPLENBQUMsQ0FBQyxDQUFDLENBQUMsR0FBRyxDQUFDLENBQUMsQ0FBQyxDQUFDLENBQUM7aUJBQ3BCO2FBQ0Y7UUFDSCxDQUFDLENBQUMsQ0FBQTtRQUNGLE1BQU0sQ0FBQyxJQUFJLENBQUMsR0FBRyxNQUFNLENBQUMsQ0FBQTtLQUN2QjtJQUNELE9BQU8sTUFBTSxDQUFDO0FBQ2hCLENBQUMsQ0FBQTtBQUdZLFFBQUEsS0FBSyxHQUFHO0lBQ25CLENBQUMsRUFBRTtRQUNELEtBQUssRUFBRSxDQUFDLENBQUMsRUFBQyxDQUFDLEVBQUMsQ0FBQyxDQUFDO1FBQ2QsTUFBTSxFQUFFLENBQUMsRUFBRSxFQUFFLENBQUMsQ0FBQyxDQUFDLEVBQUUsQ0FBQyxDQUFDLENBQUMsRUFBRSxDQUFDLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxFQUFDLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxFQUFDLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxFQUFDLENBQUMsQ0FBQyxFQUFFLENBQUMsQ0FBQyxFQUFDLENBQUMsRUFBQyxDQUFDLENBQUMsQ0FBQztLQUMxRDtJQUNELENBQUMsRUFBRSxFQUVGO0NBQ0YsQ0FBQSJ9

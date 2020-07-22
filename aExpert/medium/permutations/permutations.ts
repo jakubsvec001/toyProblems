@@ -50,9 +50,9 @@ const getPermutations = (array:number[],) => {
     return [array];
   }
   // recursive case
-  let result = [];
+  let result:number[][] = [];
   let outputs = [];
-  let current;
+  let current:number;
   // iterate across the rest of the array to find current item to pull for permutation
   for (let i = 0; i < array.length; i += 1) {
     current = array[i];

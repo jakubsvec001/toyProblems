@@ -2,7 +2,7 @@ import { tests, testInterface } from './tests'
 
 
 
-const kadanesAlgorithm = (arr: number[]):number[] => {
+const kadanesAlgorithm = (arr: number[]):void => {
 
 }
 
