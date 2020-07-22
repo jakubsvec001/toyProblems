@@ -2,7 +2,7 @@
 
 const powerset = (array:number[]):number[][] => {
   const subsets = [[]];
-  let ele;
+  let ele:any;
   
   for (let i = 0; i < array.length; i += 1) {
     ele = array[i];

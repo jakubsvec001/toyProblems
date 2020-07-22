@@ -1,9 +1,10 @@
 export const deepSort = (array:number[][]) => {
   // first sort by length;
-  interface l {
-    [key: string]: number[][];
+
+  interface IbyLength {
+    [key: number]: any;
   }
-  const byLength = {}
+  const byLength:IbyLength = {}
   array.forEach((item, i) => {
     if (!byLength[item.length]) {
       byLength[item.length] = [item];
@@ -15,7 +16,7 @@ export const deepSort = (array:number[][]) => {
   const result = [];
   for (const key in byLength) {
     const values = byLength[key];
-    values.sort((a, b) => {
+    values.sort((a:number[], b:number[]) => {
       for (let i = 0; i < a.length; i += 1){
         if (a[i] !== b[i]) {
           return a[i] > b[i];
@@ -37,5 +38,5 @@ export const tests = {
     
   }
 }
-console.log(deepSort([[2,3],[],[2],[1,2,3],[1,2],[1,3],[3],[1]));
+// console.log(deepSort([[2,3],[],[2],[1,2,3],[1,2],[1,3],[3],[1]));
 // console.log(tests[1].output)
