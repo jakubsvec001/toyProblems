@@ -1,0 +1,22 @@
+import diskStacking, { isLarger, totalHeight } from './diskStacking';
+
+describe('diskStacking', () => {
+  it('1', () => {
+    expect(diskStacking([[2,1,2], [3,2,3], [2,2,8], [2,3,4], [1,3,1], [4,4,5]])).toEqual([[2,1,2], [3,2,3], [4,4,5]])
+  })
+})
+
+describe('isLarger', () => {
+  it('1', () => {
+    expect(isLarger([3,3,3], [4,4,4])).toBe(true);
+  });
+  it('2', () => {
+    expect(isLarger([3,3,3], [4,4,3])).toBe(false);
+  })
+})
+
+describe('totalHeight', () => {
+  it('1', () => {
+    expect(totalHeight([[66,1,66], [77,2,77], [88,3,88], [99,4,99]])).toBe(10);
+  })
+})
