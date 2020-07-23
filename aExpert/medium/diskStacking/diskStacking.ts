@@ -78,11 +78,11 @@ const diskStackingDynamic = (disks:number[][]) => {
   return buildSequence(disks, sequences, maxHeightIdx)
 }
 
-function areValidDimensions(a, b) {
+function areValidDimensions(a:number[], b:number[]) {
   return a[0] < b[0] && a[1] < b[1] && a[2] < b[2];
 }
 
-function buildSequence(arr, seqs, currIdx) {
+function buildSequence(arr:number[][], seqs:number[], currIdx:number) {
   const seq = [];
   while (currIdx !== undefined) {
     seq.unshift(arr[currIdx]);

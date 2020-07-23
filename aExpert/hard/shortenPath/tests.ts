@@ -1,4 +1,11 @@
-const tests = {
+interface Itest {
+  [key: string]: {
+    input: string;
+    output: string;
+  }
+}
+
+const tests:Itest = {
   0: {
     input: '/foo/../test/../test/../foo//bar/./baz',
     output: '/foo/bar/baz',

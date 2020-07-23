@@ -1,7 +1,7 @@
 import tests from './tests';
 
 
-const shortenPath = (path) => {
+const shortenPath = (path:string):string => {
   const longPath = path.split('/');
   const stack = [];
   let upDir = 0;
