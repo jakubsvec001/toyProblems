@@ -1,4 +1,4 @@
-import patternMatcher, { processForPattern } from './patternMatcher';
+import patternMatcher from './patternMatcher';
 import tests from './tests';
 
 describe('patternMatcher', () => {
