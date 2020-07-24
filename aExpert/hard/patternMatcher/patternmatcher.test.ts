@@ -11,11 +11,6 @@ describe('patternMatcher', () => {
   }
 })
 
-describe('processForPattern', () => {
-  it('1', () => {
-    expect(processForPattern('gogopowerrangergogopowerranger', 4)).toEqual('go')
-    expect(processForPattern('powerrangerpowerranger', 2)).toEqual('powerranger')
-  })
-})
+
 
 

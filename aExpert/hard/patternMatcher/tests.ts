@@ -44,23 +44,31 @@ const tests:Itests = {
   },
   9: {
     input: ['yy', 'stringstring'],
-    output: [],
+    output: ['string'],
   },
   10: {
     input: ['y', 'stringhere'],
-    output: [],
+    output: ['stringhere'],
   },
   11: {
     input: ['x', 'stringhere'],
-    output: [],
+    output: ['stringhere'],
   },
   12: {
-    input: ['xyxy', 'angelinaanistonangelinaaniston'],
-    output: ['angelinaan', 'iston'],
+    input: ['xyxy', 'acecatacecat'],
+    output: ['ace', 'cat'],
   },
   13: {
-    input: ['xxyy', 'angelinaangelinanistonniston'],
-    output: ['angelina', 'niston'],
+    input: ['xxyy', 'catcatnipnip'],
+    output: ['cat', 'nip'],
+  },
+  14: {
+    input: ['yyxyyx', 'gogopowerrangergogopowerranger'],
+    output: ['powerranger', 'go'],
+  },
+  15: {
+    input: ['yyx', 'doozydoozya'],
+    output: ['doozy', 'a'],
   },
 }
 
