@@ -10,8 +10,8 @@ const findLoop = (head:LL):LL => {
   }
   slow = head;
   while (slow !== fast) {
-    slow = slow.next;
-    fast = fast.next;
+    slow = slow.next!;
+    fast = fast.next!
   }
   return slow;
 }
