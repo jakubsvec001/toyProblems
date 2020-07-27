@@ -1,26 +1,20 @@
-import { loopTest, noLoopTest } from './tests'
+import { loopTest0, loopTest1, noLoopTest } from './tests'
 import LL from './LinkedListClass';
 
 
-const findLoop = (head:LL):LL|null => {
-  interface iParents {
-    [key: string]: number|string;
+const findLoop = (head:LL):LL => {
+  let slow:LL = head.next;
+  let fast:LL = head.next.next;
+  while (slow !== fast) {
+    slow = slow.next;
+    fast = fast.next.next;
   }
-  const parents:iParents = {};
-  parents[head.value] = 'root'
-  let context:LL = head;
-  while (true) {
-    if (context.next === null) {
-      return null;
-    }
-    if (parents[context.next.value]) {
-      let loopHead = context.next;
-      context.next = null;
-      return loopHead;
-    }
-    parents[context.next.value] = context.value;
-    context = context.next;
+  slow = head;
+  while (slow !== fast) {
+    slow.next;
+    fast.next;
   }
+  return slow;
 }
 
 
