@@ -1,23 +1,6 @@
-import { loopTest } from './tests'
+import { loopTest, noLoopTest } from './tests'
+import LL from './LinkedListClass';
 
-export class LL {
-  value: number|string;
-  next: LL|null;
-  constructor(value:number|string){
-    this.value = value
-    this.next = null;
-  }
-
-  printArray() {
-    const result = [];
-    let context:LL|null = this;
-    while (context) {
-      result.push(context.value);
-      context = context.next;
-    }
-    return result;
-  }
-}
 
 const findLoop = (head:LL):LL|null => {
   interface iParents {
@@ -40,6 +23,5 @@ const findLoop = (head:LL):LL|null => {
   }
 }
 
-console.log(findLoop(loopTest[0]))
 
 export default findLoop;

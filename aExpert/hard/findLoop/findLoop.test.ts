@@ -1,4 +1,5 @@
-import findLoop, { LL } from './findLoop'
+import findLoop from './findLoop';
+import LL from './LinkedListClass';
 import { loopTest, noLoopTest } from './tests';
 
 
