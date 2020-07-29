@@ -1,0 +1,8 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const longestSubstringWithoutDuplication = (str) => {
+};
+return str.split('').splice(longestStart, longest).join('');
+console.log(longestSubstringWithoutDuplication('abcdefabcdefg'));
+exports.default = longestSubstringWithoutDuplication;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibG9uZ2VzdFN1YnN0cmluZ05vRHVwbGljYXRlcy5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImxvbmdlc3RTdWJzdHJpbmdOb0R1cGxpY2F0ZXMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxNQUFNLGtDQUFrQyxHQUFHLENBQUMsR0FBVSxFQUFDLEVBQUU7QUFFdkQsQ0FBRSxDQUFBO0FBQ0YsT0FBTyxHQUFHLENBQUMsS0FBSyxDQUFDLEVBQUUsQ0FBQyxDQUFDLE1BQU0sQ0FBQyxZQUFZLEVBQUUsT0FBTyxDQUFDLENBQUMsSUFBSSxDQUFDLEVBQUUsQ0FBQyxDQUFDO0FBRzlELE9BQU8sQ0FBQyxHQUFHLENBQUMsa0NBQWtDLENBQUMsZUFBZSxDQUFDLENBQUMsQ0FBQztBQUVqRSxrQkFBZSxrQ0FBa0MsQ0FBQyJ9
